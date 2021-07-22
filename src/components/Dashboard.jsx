@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import JSONPretty from "react-json-pretty";
 
 export default function Dashboard() {
   const [userDalies, setUserDalies] = useState([]);
@@ -10,8 +11,9 @@ export default function Dashboard() {
       },
     });
     const data = await response.json();
-    console.log(data);
-    // setUserDalies(data);
+    // console.log(data);
+    setUserDalies(data);
+    await console.log(userDalies);
   };
 
   useEffect(() => {
@@ -21,11 +23,7 @@ export default function Dashboard() {
   return (
     <div>
       <h1>Dashboard Page</h1>
-      <ul>
-        {userDalies.map((daily) => (
-          <li key={daily.id}>{daily}</li>
-        ))}
-      </ul>
+      <JSONPretty data={userDalies}></JSONPretty>
     </div>
   );
 }
