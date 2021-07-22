@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useAuth } from "./contexts/AuthProvider";
 
-export default function SignUp() {
+export default function SignUp({ history }) {
+  const { authDispatch } = useAuth();
   const [signUpForm, setSignUpForm] = useState({
     user: {
       first_name: "",
@@ -15,6 +16,7 @@ export default function SignUp() {
       admin: false,
     },
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     first_name,
@@ -34,13 +36,52 @@ export default function SignUp() {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(e.target.name);
-    console.log(e.target.value);
-    console.log(signUpForm);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSignUpForm({
+      user: {
+        first_name: "",
+        last_name: "",
+        username: "",
+        password: "",
+        password_confirmation: "",
+        email: "",
+        department_code: "",
+        distance_from_work: "",
+        admin: false,
+      },
+    });
+    postSignUp();
+  }
+
+  async function postSignUp() {
+    const response = await fetch("http://127.0.0.1:3000/api/auth/sign_up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(signUpForm),
+    });
+    const data = await response.json();
+    if (data.jwt) {
+      authDispatch({ type: "login", token: data.jwt, value: data });
+      history.push("/dashboard");
+    } else {
+      setErrorMessage(data);
+    }
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      {errorMessage &&
+        Object.keys(errorMessage).map((key) => (
+          <li key={key}>
+            {key}
+            {errorMessage[key][0]}
+          </li>
+        ))}
       <input
         type="text"
         placeholder="first name"
@@ -72,7 +113,7 @@ export default function SignUp() {
       <input
         type="password"
         placeholder="confirm password"
-        name="password"
+        name="password_confirmation"
         value={password_confirmation}
         onChange={changeInput}
       />
