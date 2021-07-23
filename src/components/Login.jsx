@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 import { useAuth } from "./contexts/AuthProvider";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+
+import Link from "@material-ui/core/Link";
+
 import "../stylesheets/App.css";
 import { Grid, InputAdornment } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import {
   PermIdentityOutlined,
   LockOpen,
   MailOutline,
-  ArrowRightTwoTone,
 } from "@material-ui/icons";
 
 const theme = createTheme({
   typography: {
-    SignUpLink: {
+    SignUp: {
       fontSize: 2,
+      color: "#FFFFFF",
     },
   },
 });
@@ -71,24 +70,34 @@ export default function Login({ history }) {
   return (
     <div>
       <form noValidate onSubmit={submitLogin}>
-        <Grid container style={{ minHeight: "100vh" }}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: "100vh" }}
+        >
           <Grid
             container
+            className="container"
             item
             xs={12}
-            sm={6}
+            sm={3}
             alignItems="center"
             direction="column"
-            justifyContent="space-between"
+            justifyContent="center"
             style={{ padding: 10 }}
           >
             <div />
             <div
+              className="mainCard"
               style={{
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "center",
+
                 maxWidth: 400,
                 minWidth: 300,
+                minHeight: 580,
               }}
             >
               <Grid container justifyContent="center">
@@ -96,6 +105,7 @@ export default function Login({ history }) {
                   Sign in
                 </Typography>
               </Grid>
+              <div style={{ height: 30 }} />
               <TextField
                 label="Username"
                 margin="normal"
@@ -139,13 +149,16 @@ export default function Login({ history }) {
                 }}
               ></TextField>
               <div style={{ height: 20 }} />
-              <Button type="submit" color="primary" variant="contained">
+              <Button type="submit" className="LogInButton" variant="contained">
                 Log In
               </Button>
               <div style={{ height: 20 }} />
               <ThemeProvider theme={theme}>
-                <Typography variant="SignUpLink" align="right">
-                  Dont have an account? Sign Up
+                <Typography variant="SignUp" align="right">
+                  Dont have an account?{" "}
+                  <Link variant="SignUp" to="/sign-up" className="Sign-Up-Link">
+                    Sign Up
+                  </Link>
                 </Typography>
               </ThemeProvider>
             </div>
