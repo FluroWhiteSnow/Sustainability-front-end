@@ -46,12 +46,14 @@ export default function Dashboard() {
     const travelTotal = await getTravelTotal.json();
     const userCo2Daily = await getUserCo2Daily.json();
     const co2Total = await getCo2Total.json();
+    const user = await getUser.json();
 
     setCupstotal(cupsTotal);
     setUserDalies(userDaily);
     setTraveltotal(travelTotal);
     setUserCo2Daily(userCo2Daily);
     setUserCo2Total(co2Total);
+    setUser(user);
 
     await console.log(userDaily, cupsTotal, travelTotal, userCo2Daily);
   };
@@ -68,6 +70,7 @@ export default function Dashboard() {
       <JSONPretty data={userDalies}></JSONPretty>
       <JSONPretty data={userCo2Daily}></JSONPretty>
       <JSONPretty data={userCo2Total}></JSONPretty>
+      <JSONPretty data={user}></JSONPretty>
     </div>
   );
 }
