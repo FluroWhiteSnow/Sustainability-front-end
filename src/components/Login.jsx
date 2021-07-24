@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from "./contexts/AuthProvider";
-// import { Link } from "react-router-dom";
-
 import Link from "@material-ui/core/Link";
-
 import "../stylesheets/App.css";
 import { Grid, InputAdornment } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import {
   PermIdentityOutlined,
@@ -104,7 +102,18 @@ export default function Login({ history }) {
                   Sign in
                 </Typography>
               </Grid>
+
               <div style={{ height: 20, marginBottom: 20 }} />
+              {errorMessage ? (
+                <Alert
+                  severity="error"
+                  style={{ marginTop: -20, marginBottom: 15 }}
+                >
+                  {errorMessage}
+                </Alert>
+              ) : (
+                <></>
+              )}
               <TextField
                 label="Username"
                 margin="normal"
