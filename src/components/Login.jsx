@@ -81,11 +81,10 @@ export default function Login({ history }) {
             className="container"
             item
             xs={12}
-            sm={3}
             alignItems="center"
             direction="column"
             justifyContent="center"
-            style={{ padding: 10 }}
+            style={{ padding: 10, maxWidth: 500 }}
           >
             <div />
             <div

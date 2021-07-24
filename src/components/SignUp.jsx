@@ -128,11 +128,12 @@ export default function SignUp({ history }) {
             className="container"
             item
             xs={12}
-            sm={3}
+            // sm={8}
+            // m={3}
             alignItems="center"
             direction="column"
             justifyContent="center"
-            style={{ padding: 40 }}
+            style={{ padding: 40, maxWidth: 500 }}
           >
             <div />
             <div
