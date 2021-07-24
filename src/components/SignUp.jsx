@@ -15,6 +15,15 @@ import {
   MailOutline,
 } from "@material-ui/icons";
 
+const theme = createTheme({
+  typography: {
+    LogIn: {
+      fontSize: 2,
+      color: "#FFFFFF",
+    },
+  },
+});
+
 const departments = [
   {
     value: "Finance",
@@ -268,6 +277,14 @@ export default function SignUp({ history }) {
                 Sign Up
               </Button>
               <div style={{ height: 20 }} />
+              <ThemeProvider theme={theme}>
+                <Typography variant="SignUp" align="right">
+                  Already have an account?{" "}
+                  <Link variant="LogIn" to="/" className="Sign-Up-Log-In-Link">
+                    Log In
+                  </Link>
+                </Typography>
+              </ThemeProvider>
             </div>
           </Grid>
         </Grid>
@@ -275,74 +292,3 @@ export default function SignUp({ history }) {
     </div>
   );
 }
-
-// input
-//         type="number"
-//         placeholder="distance from work"
-//         name="distance_from_work"
-//         value={distance_from_work}
-//         onChange={changeInput}
-//       />
-
-// {errorMessage &&
-//         Object.keys(errorMessage).map((key) => (
-//           <li key={key}>
-//             {key}
-//             {errorMessage[key][0]}
-//           </li>
-//         ))} <input
-//         type="text"
-//         placeholder="email"
-//         name="email"
-//         value={email}
-//         onChange={changeInput}
-//       />
-//       <input
-//         type="text"
-//         placeholder="first name"
-//         name="first_name"
-//         value={first_name}
-//         onChange={changeInput}
-//       />
-//       <input
-//         type="text"
-//         placeholder="last name"
-//         name="last_name"
-//         value={last_name}
-//         onChange={changeInput}
-//       />
-//       <input
-//         type="text"
-//         placeholder="username"
-//         name="username"
-//         value={username}
-//         onChange={changeInput}
-//       />
-//       <input
-//         type="password"
-//         placeholder="password"
-//         name="password"
-//         value={password}
-//         onChange={changeInput}
-//       />
-//       <input
-//         type="password"
-//         placeholder="confirm password"
-//         name="password_confirmation"
-//         value={password_confirmation}
-//         onChange={changeInput}
-//       />
-//
-//       <select
-//         type="text"
-//         placeholder="department code"
-//         name="department_code"
-//         value={department_code}
-//         onChange={changeInput}
-//       >
-//         <option value="marketing">Marketing</option>
-//         <option value="sales">Sales</option>
-//         <option value="operations">Operations</option>
-//       </select>
-//       <
-//       <input type="submit" />/

@@ -160,7 +160,11 @@ export default function Login({ history }) {
               <ThemeProvider theme={theme}>
                 <Typography variant="SignUp" align="right">
                   Dont have an account?{" "}
-                  <Link variant="SignUp" to="/sign-up" className="Sign-Up-Link">
+                  <Link
+                    variant="SignUp"
+                    to="/sign-up"
+                    className="Sign-Up-Log-In-Link"
+                  >
                     Sign Up
                   </Link>
                 </Typography>
