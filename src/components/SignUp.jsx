@@ -8,6 +8,8 @@ import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
+import PinDropOutlinedIcon from "@material-ui/icons/PinDropOutlined";
+import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import MenuItem from "@material-ui/core/MenuItem";
 import {
   PermIdentityOutlined,
@@ -191,7 +193,7 @@ export default function SignUp({ history }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <PermIdentityOutlined />
+                      <MailOutline />
                     </InputAdornment>
                   ),
                 }}
@@ -205,7 +207,7 @@ export default function SignUp({ history }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <PermIdentityOutlined />
+                      <AccountBoxOutlinedIcon />
                     </InputAdornment>
                   ),
                 }}
@@ -220,7 +222,7 @@ export default function SignUp({ history }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <PermIdentityOutlined />
+                      <LockOpen />
                     </InputAdornment>
                   ),
                 }}
@@ -235,7 +237,7 @@ export default function SignUp({ history }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <PermIdentityOutlined />
+                      <LockOpen />
                     </InputAdornment>
                   ),
                 }}
@@ -249,18 +251,18 @@ export default function SignUp({ history }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <PermIdentityOutlined />
+                      <PinDropOutlinedIcon />
                     </InputAdornment>
                   ),
                 }}
               ></TextField>
               <TextField
                 select
-                label="Select"
+                margin="normal"
+                label="Select your department"
                 value={department_code}
                 name="department_code"
                 onChange={changeInput}
-                helperText="Select your department"
               >
                 {departments.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
