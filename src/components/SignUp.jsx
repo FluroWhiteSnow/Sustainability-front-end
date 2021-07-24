@@ -1,8 +1,49 @@
 import React, { useState } from "react";
 import { useAuth } from "./contexts/AuthProvider";
+import Link from "@material-ui/core/Link";
+import "../stylesheets/App.css";
+import { Grid, InputAdornment } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import PinDropOutlinedIcon from "@material-ui/icons/PinDropOutlined";
+import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
+import MenuItem from "@material-ui/core/MenuItem";
+import {
+  PermIdentityOutlined,
+  LockOpen,
+  MailOutline,
+} from "@material-ui/icons";
+
+const theme = createTheme({
+  typography: {
+    LogIn: {
+      fontSize: 2,
+      color: "#FFFFFF",
+    },
+  },
+});
+
+const departments = [
+  {
+    value: "Finance",
+    label: "Finance",
+  },
+  {
+    value: "Accounting",
+    label: "Accounting",
+  },
+  {
+    value: "IT",
+    label: "IT",
+  },
+];
 
 export default function SignUp({ history }) {
   const { authDispatch } = useAuth();
+
   const [signUpForm, setSignUpForm] = useState({
     user: {
       first_name: "",
@@ -11,7 +52,7 @@ export default function SignUp({ history }) {
       password: "",
       password_confirmation: "",
       email: "",
-      department_code: "",
+      department_code: "Accounting",
       distance_from_work: "",
       admin: false,
     },
@@ -74,75 +115,182 @@ export default function SignUp({ history }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {errorMessage &&
-        Object.keys(errorMessage).map((key) => (
-          <li key={key}>
-            {key}
-            {errorMessage[key][0]}
-          </li>
-        ))}
-      <input
-        type="text"
-        placeholder="first name"
-        name="first_name"
-        value={first_name}
-        onChange={changeInput}
-      />
-      <input
-        type="text"
-        placeholder="last name"
-        name="last_name"
-        value={last_name}
-        onChange={changeInput}
-      />
-      <input
-        type="text"
-        placeholder="username"
-        name="username"
-        value={username}
-        onChange={changeInput}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        name="password"
-        value={password}
-        onChange={changeInput}
-      />
-      <input
-        type="password"
-        placeholder="confirm password"
-        name="password_confirmation"
-        value={password_confirmation}
-        onChange={changeInput}
-      />
-      <input
-        type="text"
-        placeholder="email"
-        name="email"
-        value={email}
-        onChange={changeInput}
-      />
-      <select
-        type="text"
-        placeholder="department code"
-        name="department_code"
-        value={department_code}
-        onChange={changeInput}
-      >
-        <option value="marketing">Marketing</option>
-        <option value="sales">Sales</option>
-        <option value="operations">Operations</option>
-      </select>
-      <input
-        type="number"
-        placeholder="distance from work"
-        name="distance_from_work"
-        value={distance_from_work}
-        onChange={changeInput}
-      />
-      <input type="submit" />
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: "100vh" }}
+        >
+          <Grid
+            container
+            className="container"
+            item
+            xs={12}
+            sm={3}
+            alignItems="center"
+            direction="column"
+            justifyContent="center"
+            style={{ padding: 40 }}
+          >
+            <div />
+            <div
+              className="mainCard"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+
+                maxWidth: 350,
+                minWidth: 330,
+                minHeight: 580,
+              }}
+            >
+              <Grid container justifyContent="center">
+                <Typography component="h1" variant="h4">
+                  Sign Up
+                </Typography>
+              </Grid>
+
+              <div style={{ height: 30 }} />
+              <TextField
+                label="First Name"
+                margin="normal"
+                value={first_name}
+                onChange={changeInput}
+                name="first_name"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PermIdentityOutlined />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+
+              <TextField
+                label="Last Name"
+                margin="normal"
+                value={last_name}
+                onChange={changeInput}
+                name="last_name"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PermIdentityOutlined />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+
+              <TextField
+                label="Email"
+                margin="normal"
+                value={email}
+                onChange={changeInput}
+                name="email"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MailOutline />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <TextField
+                label="Username"
+                margin="normal"
+                value={username}
+                onChange={changeInput}
+                name="username"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountBoxOutlinedIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <TextField
+                type="password"
+                label="Password"
+                margin="normal"
+                value={password}
+                onChange={changeInput}
+                name="password"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockOpen />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <TextField
+                type="password"
+                label="Confirm Password"
+                margin="normal"
+                value={password_confirmation}
+                onChange={changeInput}
+                name="password_confirmation"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockOpen />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <TextField
+                label="Distance from Work (km)"
+                margin="normal"
+                value={distance_from_work}
+                onChange={changeInput}
+                name="distance_from_work"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PinDropOutlinedIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+              <TextField
+                select
+                margin="normal"
+                label="Select your department"
+                value={department_code}
+                name="department_code"
+                onChange={changeInput}
+              >
+                {departments.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <div style={{ height: 20 }} />
+              <Button
+                type="submit"
+                className="LogIn-SignUp-Button"
+                variant="contained"
+              >
+                Sign Up
+              </Button>
+              <div style={{ height: 20 }} />
+              <ThemeProvider theme={theme}>
+                <Typography variant="SignUp" align="right">
+                  Already have an account?{" "}
+                  <Link variant="LogIn" to="/" className="Sign-Up-Log-In-Link">
+                    Log In
+                  </Link>
+                </Typography>
+              </ThemeProvider>
+            </div>
+          </Grid>
+        </Grid>
+      </form>
+    </div>
   );
 }
