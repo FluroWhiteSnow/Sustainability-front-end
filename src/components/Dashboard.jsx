@@ -1,6 +1,9 @@
 import { doesNotMatch } from "assert";
 import React, { useEffect, useState } from "react";
 import JSONPretty from "react-json-pretty";
+import DashboardContainer from "./DashboardContainer";
+import { makeStyles } from "@material-ui/core/styles";
+import MetricCard from "./MetricCard";
 
 export default function Dashboard() {
   const [user, setUser] = useState();
@@ -62,15 +65,35 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
+  const useStyles = makeStyles(() => ({
+    paperContainer: {
+      display: "flex",
+      justifyContent: "space-evenly",
+      flexWrap: "wrap",
+      height: "100vh",
+      width: "100vw",
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
-    <div>
-      <h1>Dashboard Page</h1>
-      <JSONPretty data={cupsTotal}></JSONPretty>
+    <div className={classes.paperContainer}>
+      <MetricCard />
+      <DashboardContainer />
+      <DashboardContainer>
+        <MetricCard />
+        <MetricCard />
+        <MetricCard />
+      </DashboardContainer>
+      <DashboardContainer />
+      <DashboardContainer />
+      {/* <JSONPretty data={cupsTotal}></JSONPretty>
       <JSONPretty data={travelTotal}></JSONPretty>
       <JSONPretty data={userDalies}></JSONPretty>
       <JSONPretty data={userCo2Daily}></JSONPretty>
       <JSONPretty data={userCo2Total}></JSONPretty>
-      <JSONPretty data={user}></JSONPretty>
+      <JSONPretty data={user}></JSONPretty> */}
     </div>
   );
 }
