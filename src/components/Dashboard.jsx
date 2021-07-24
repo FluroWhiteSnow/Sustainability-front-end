@@ -4,14 +4,18 @@ import JSONPretty from "react-json-pretty";
 import DashboardContainer from "./DashboardContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
+import { Grid, InputAdornment } from "@material-ui/core";
+import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
+import LocalCafeIcon from "@material-ui/icons/LocalCafe";
+import WbCloudyIcon from "@material-ui/icons/WbCloudy";
 
 export default function Dashboard() {
-  const [user, setUser] = useState();
-  const [userDalies, setUserDalies] = useState();
-  const [cupsTotal, setCupstotal] = useState();
-  const [travelTotal, setTraveltotal] = useState();
-  const [userCo2Daily, setUserCo2Daily] = useState();
-  const [userCo2Total, setUserCo2Total] = useState();
+  const [user, setUser] = useState({});
+  const [userDalies, setUserDalies] = useState({});
+  const [cupsTotal, setCupstotal] = useState({});
+  const [travelTotal, setTraveltotal] = useState({});
+  const [userCo2Daily, setUserCo2Daily] = useState({});
+  const [userCo2Total, setUserCo2Total] = useState({});
 
   const fetchData = async () => {
     const auth = {
@@ -79,15 +83,40 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+      <MetricCard
+        total={cupsTotal.reusable_cups_total}
+        metricType="Reusable Impact"
+        icon={<LocalCafeIcon style={{ width: "100px", height: "100px" }} />}
+      />
+      <MetricCard
+        total={travelTotal.walk_total_km + travelTotal.pt_total_km}
+        metricType="Commute Impact"
+        icon={
+          <DirectionsBikeIcon style={{ width: "100px", height: "100px" }} />
+        }
+      />
+      <MetricCard
+        total={
+          userCo2Total.walk_co2_total +
+          userCo2Total.pt_co2_total +
+          userCo2Total.reusable_cups_co2_total
+        }
+        metricType="CO2 Diverted"
+        icon={<WbCloudyIcon style={{ width: "100px", height: "100px" }} />}
+      />
+
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
+
       {/* <JSONPretty data={cupsTotal}></JSONPretty>
+            <JSONPretty data={cupsTotal}></JSONPretty>
       <JSONPretty data={travelTotal}></JSONPretty>
+      <JSONPretty data={userCo2Total}></JSONPretty>
       <JSONPretty data={userDalies}></JSONPretty>
       <JSONPretty data={userCo2Daily}></JSONPretty>
-      <JSONPretty data={userCo2Total}></JSONPretty>
+
       <JSONPretty data={user}></JSONPretty> */}
     </div>
   );
