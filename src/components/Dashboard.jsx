@@ -79,13 +79,8 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      <MetricCard />
       <DashboardContainer />
-      <DashboardContainer>
-        <MetricCard />
-        <MetricCard />
-        <MetricCard />
-      </DashboardContainer>
+      <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
       {/* <JSONPretty data={cupsTotal}></JSONPretty>
