@@ -18,5 +18,12 @@
 .LogIn-SignUp-Button {
   color: white !important;
   background-image: linear-gradient(120deg, #84d8fa 0%, #c444ff 100%);
-  /* transition: 0.5s; */
+}
+.testing {
+  background: linear-gradient(
+    63.18deg,
+    #25edfc 0%,
+    rgba(200, 109, 255, 0.75) 53.86%,
+    #fc6bc2 100%
+  );
 }

@@ -115,7 +115,8 @@ export default function SignUp({ history }) {
   }
 
   return (
-    <div>
+    <div className="testing">
+      <div className="rectangle-right"></div>
       <form onSubmit={handleSubmit}>
         <Grid
           container
@@ -128,8 +129,7 @@ export default function SignUp({ history }) {
             className="container"
             item
             xs={12}
-            // sm={8}
-            // m={3}
+            // sm={3}
             alignItems="center"
             direction="column"
             justifyContent="center"

@@ -68,7 +68,7 @@ export default function Login({ history }) {
   };
 
   return (
-    <div>
+    <div className="testing">
       <form noValidate onSubmit={submitLogin}>
         <Grid
           container
@@ -84,7 +84,7 @@ export default function Login({ history }) {
             alignItems="center"
             direction="column"
             justifyContent="center"
-            style={{ padding: 10, maxWidth: 500 }}
+            style={{ padding: 5, maxWidth: 430 }}
           >
             <div />
             <div
@@ -96,7 +96,7 @@ export default function Login({ history }) {
 
                 maxWidth: 350,
                 minWidth: 300,
-                minHeight: 580,
+                minHeight: 530,
               }}
             >
               <Grid container justifyContent="center">
@@ -104,7 +104,7 @@ export default function Login({ history }) {
                   Sign in
                 </Typography>
               </Grid>
-              <div style={{ height: 30 }} />
+              <div style={{ height: 20, marginBottom: 20 }} />
               <TextField
                 label="Username"
                 margin="normal"
