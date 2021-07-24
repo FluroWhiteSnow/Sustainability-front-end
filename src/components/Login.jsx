@@ -95,7 +95,7 @@ export default function Login({ history }) {
                 flexDirection: "column",
                 justifyContent: "center",
 
-                maxWidth: 400,
+                maxWidth: 350,
                 minWidth: 300,
                 minHeight: 580,
               }}
