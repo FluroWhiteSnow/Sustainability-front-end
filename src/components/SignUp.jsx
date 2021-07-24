@@ -7,14 +7,32 @@ import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
 import {
   PermIdentityOutlined,
   LockOpen,
   MailOutline,
 } from "@material-ui/icons";
 
+const departments = [
+  {
+    value: "Finance",
+    label: "Finance",
+  },
+  {
+    value: "Accounting",
+    label: "Accounting",
+  },
+  {
+    value: "IT",
+    label: "IT",
+  },
+];
+
 export default function SignUp({ history }) {
   const { authDispatch } = useAuth();
+
   const [signUpForm, setSignUpForm] = useState({
     user: {
       first_name: "",
@@ -23,7 +41,7 @@ export default function SignUp({ history }) {
       password: "",
       password_confirmation: "",
       email: "",
-      department_code: "",
+      department_code: "Accounting",
       distance_from_work: "",
       admin: false,
     },
@@ -40,21 +58,6 @@ export default function SignUp({ history }) {
     department_code,
     distance_from_work,
   } = signUpForm.user;
-
-  const departments = [
-    {
-      value: "Finance",
-      Label: "Finance",
-    },
-    {
-      value: "Accounting",
-      Label: "Accounting",
-    },
-    {
-      value: "IT",
-      label: "IT",
-    },
-  ];
 
   function changeInput(e) {
     setSignUpForm({
@@ -242,9 +245,27 @@ export default function SignUp({ history }) {
                   ),
                 }}
               ></TextField>
+              <TextField
+                select
+                label="Select"
+                value={department_code}
+                name="department_code"
+                onChange={changeInput}
+                helperText="Select your department"
+              >
+                {departments.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
               <div style={{ height: 20 }} />
-              <Button type="submit" className="LogInButton" variant="contained">
-                Log In
+              <Button
+                type="submit"
+                className="LogIn-SignUp-Button"
+                variant="contained"
+              >
+                Sign Up
               </Button>
               <div style={{ height: 20 }} />
             </div>

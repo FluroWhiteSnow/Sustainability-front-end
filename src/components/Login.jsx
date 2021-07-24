@@ -149,7 +149,11 @@ export default function Login({ history }) {
                 }}
               ></TextField>
               <div style={{ height: 20 }} />
-              <Button type="submit" className="LogInButton" variant="contained">
+              <Button
+                type="submit"
+                className="LogIn-SignUp-Button"
+                variant="contained"
+              >
                 Log In
               </Button>
               <div style={{ height: 20 }} />
