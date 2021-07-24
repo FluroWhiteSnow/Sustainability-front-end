@@ -160,8 +160,10 @@ export default function Login({ history }) {
                 <Typography variant="SignUp" align="right">
                   Dont have an account?{" "}
                   <Link
+                    href="/sign-up"
+                    onClick={changeInput}
                     variant="SignUp"
-                    to="/sign-up"
+                    // to="/sign-up"
                     className="Sign-Up-Log-In-Link"
                   >
                     Sign Up

@@ -283,7 +283,12 @@ export default function SignUp({ history }) {
               <ThemeProvider theme={theme}>
                 <Typography variant="SignUp" align="right">
                   Already have an account?{" "}
-                  <Link variant="LogIn" to="/" className="Sign-Up-Log-In-Link">
+                  <Link
+                    variant="LogIn"
+                    href="/"
+                    onClick={changeInput}
+                    className="Sign-Up-Log-In-Link"
+                  >
                     Log In
                   </Link>
                 </Typography>
