@@ -14,9 +14,5 @@ const useStyles = makeStyles(() => ({
 
 export default function DashboardContainer() {
   const classes = useStyles();
-  return (
-    <Paper className={classes.paper}>
-      <MetricCard />
-    </Paper>
-  );
+  return <Paper className={classes.paper}></Paper>;
 }
