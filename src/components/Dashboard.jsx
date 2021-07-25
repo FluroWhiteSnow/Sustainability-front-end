@@ -8,14 +8,15 @@ import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
+import LeaderBoard from "./LeaderBoard";
 
 export default function Dashboard() {
-  const [user, setUser] = useState({});
-  const [userDalies, setUserDalies] = useState({});
-  const [cupsTotal, setCupstotal] = useState({});
-  const [travelTotal, setTraveltotal] = useState({});
-  const [userCo2Daily, setUserCo2Daily] = useState({});
-  const [userCo2Total, setUserCo2Total] = useState({});
+  const [user, setUser] = useState([]);
+  const [userDalies, setUserDalies] = useState([]);
+  const [cupsTotal, setCupstotal] = useState([]);
+  const [travelTotal, setTraveltotal] = useState([]);
+  const [userCo2Daily, setUserCo2Daily] = useState([]);
+  const [userCo2Total, setUserCo2Total] = useState([]);
 
   const fetchData = async () => {
     const auth = {
@@ -62,7 +63,14 @@ export default function Dashboard() {
     setUserCo2Total(co2Total);
     setUser(user);
 
-    await console.log(userDaily, cupsTotal, travelTotal, userCo2Daily);
+    // await console.log(
+    //   user,
+    //   userDaily,
+    //   // cupsTotal,
+    //   // travelTotal,
+    //   // userCo2Daily,
+    //   userCo2Total
+    // );
   };
 
   useEffect(() => {
@@ -83,6 +91,13 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+      <JSONPretty data={userCo2Total}></JSONPretty>
+      <h1>Table</h1>
+      <LeaderBoard
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+      ></LeaderBoard>
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
@@ -91,7 +106,7 @@ export default function Dashboard() {
       {/* <JSONPretty data={cupsTotal}></JSONPretty>
             <JSONPretty data={cupsTotal}></JSONPretty>
       <JSONPretty data={travelTotal}></JSONPretty>
-      <JSONPretty data={userCo2Total}></JSONPretty>
+      
       <JSONPretty data={userDalies}></JSONPretty>
       <JSONPretty data={userCo2Daily}></JSONPretty>
 
