@@ -4,6 +4,7 @@ import JSONPretty from "react-json-pretty";
 import DashboardContainer from "./DashboardContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
+import UserDailies from "./UserDailies";
 import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
@@ -62,7 +63,7 @@ export default function Dashboard() {
     setUserCo2Total(co2Total);
     setUser(user);
 
-    await console.log(userDaily, cupsTotal, travelTotal, userCo2Daily);
+    // await console.log(userDaily, cupsTotal, travelTotal, userCo2Daily);
   };
 
   useEffect(() => {
@@ -83,6 +84,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+      <UserDailies />
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
