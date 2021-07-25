@@ -92,7 +92,9 @@ export default function LeaderBoard(props) {
 
       let efficiantMap = efficiency.map((item2) => {
         if (item.id === item2.id) {
-          container.efficiency += item2.value;
+          let sum = container.efficiency + item2.value;
+          let n = sum.toFixed(2);
+          container.efficiency = n;
         }
       });
       return container;
@@ -101,7 +103,8 @@ export default function LeaderBoard(props) {
     return data;
   };
 
-  console.log(getData(props));
+  let data = getData(props);
+  console.log(data);
 
   return <div style={{ maxWidth: "100%" }}></div>;
 }
