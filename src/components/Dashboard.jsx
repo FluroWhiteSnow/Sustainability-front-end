@@ -91,18 +91,19 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      <JSONPretty data={userCo2Total}></JSONPretty>
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <h1>Table</h1>
       <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
+        style={{ width: 500 }}
       ></LeaderBoard>
+      {/* <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
-      <DashboardContainer />
-      <DashboardContainer />
+      <DashboardContainer /> */}
 
       {/* <JSONPretty data={cupsTotal}></JSONPretty>
             <JSONPretty data={cupsTotal}></JSONPretty>

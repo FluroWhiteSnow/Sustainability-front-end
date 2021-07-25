@@ -1,7 +1,17 @@
 import React from "react";
+import { useState } from "react";
+import MaterialTable from "material-table";
 
 export default function LeaderBoard(props) {
-  const getData = (props) => {
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  const columns = [
+    { title: "Name", field: "name" },
+    { title: "Department", field: "department" },
+    { title: "Efficiency", field: "efficiency" },
+  ];
+
+  function getData(props) {
     let userData = props.users;
     let cO2DailyData = props.userCo2Dalies;
     let userCo2Data = props.co2Totals;
@@ -101,10 +111,29 @@ export default function LeaderBoard(props) {
     });
 
     return data;
-  };
+  }
 
   let data = getData(props);
   console.log(data);
 
-  return <div style={{ maxWidth: "100%" }}></div>;
+  return (
+    <div style={{ minWidth: 800 }}>
+      <MaterialTable
+        columns={columns}
+        data={data}
+        title="User Efficiency Rating"
+        onRowClick={(evt, selectedRow) =>
+          setSelectedRow(selectedRow.tableData.id)
+        }
+        options={{
+          search: false,
+          showFirstLastPageButtons: false,
+          rowStyle: (rowData) => ({
+            backgroundColor:
+              selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
+          }),
+        }}
+      />
+    </div>
+  );
 }
