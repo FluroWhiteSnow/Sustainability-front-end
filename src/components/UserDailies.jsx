@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import JSONPretty from "react-json-pretty";
+import DailyForm from "./DailyForm";
 
 const useStyles = makeStyles({
   container: {
@@ -131,12 +132,13 @@ export default function UserDailies() {
           <Typography variant="body2" component="p">
             {userDaily.reusable_cups}
           </Typography>
-          <Button
+          {/* <Button
             onClick={() => handleClick("edit", userDaily.id)}
             size="small"
           >
             Edit
-          </Button>
+          </Button> */}
+          <DailyForm />
           <Button
             onClick={() => handleClick("delete", userDaily.id)}
             size="small"
