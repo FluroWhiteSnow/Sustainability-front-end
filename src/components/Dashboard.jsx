@@ -97,6 +97,7 @@ export default function Dashboard() {
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
       ></LeaderBoard>
       <DashboardContainer />
       <DashboardContainer />
