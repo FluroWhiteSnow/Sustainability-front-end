@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: red;
+  background-color: white;
   max-height: 33%;
   /*  comment out the width for mobile */
   max-width: 33%;
@@ -47,4 +47,5 @@
   max-width: 95%;
   max-height: 90%;
   border-radius: 7px;
+  padding-bottom: 7px;
 }

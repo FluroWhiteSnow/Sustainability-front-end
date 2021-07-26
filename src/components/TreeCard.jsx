@@ -16,38 +16,18 @@ export default function TreeCard(props) {
 
   console.log(data);
 
-  //   let data = 45;
+  //   let data = 210;
 
   if (!(data > 50) && data < 51) {
-    return (
-      <div className="tree-container">
-        <img src={bg1} minWidth="400" height="200" />
-      </div>
-    );
+    return <img src={bg1} className="tree-img" />;
   } else if (!(data > 100) && data < 101) {
-    return (
-      <div>
-        <img src={bg2} minWidth="400" height="200" />
-      </div>
-    );
+    return <img src={bg2} className="tree-img" />;
   } else if (!(data > 150) && data < 151) {
-    return (
-      <div>
-        <img src={bg3} minWidth="400" height="200" />
-      </div>
-    );
+    return <img src={bg3} className="tree-img" />;
   } else if (!(data > 200) && data < 201) {
-    return (
-      <div>
-        <img src={bg4} minWidth="" height="200" />
-      </div>
-    );
+    return <img src={bg4} className="tree-img" />;
   } else if (!(data > 250) && data < 251) {
-    return (
-      <div>
-        <img src={bg5} />
-      </div>
-    );
+    return <img src={bg5} className="tree-img" />;
   } else {
     return <img src={bg6} className="tree-img" />;
   }
