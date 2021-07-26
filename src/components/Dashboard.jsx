@@ -4,6 +4,7 @@ import JSONPretty from "react-json-pretty";
 import DashboardContainer from "./DashboardContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
+import UserDailies from "./UserDailies";
 import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
@@ -63,6 +64,7 @@ export default function Dashboard() {
     setUserCo2Total(co2Total);
     setUser(user);
 
+
     // await console.log(
     //   user,
     //   userDaily,
@@ -71,6 +73,7 @@ export default function Dashboard() {
     //   // userCo2Daily,
     //   userCo2Total
     // );
+
   };
 
   useEffect(() => {
@@ -91,6 +94,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <LeaderBoard
         users={user}
@@ -100,6 +104,9 @@ export default function Dashboard() {
         style={{ width: 500 }}
       ></LeaderBoard>
       {/* <DashboardContainer />
+
+      <UserDailies />
+
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer /> */}
