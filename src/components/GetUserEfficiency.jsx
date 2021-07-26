@@ -53,20 +53,24 @@ export default function getUserEfficiency(props) {
     return container;
   });
 
-  let mappedCupsTotal = cupsTotal.map((item) => {
-    const container = {};
-    let id = "id";
-    let reuasbleDividedCoffee = "reuasbleDividedCoffee";
+  console.log(cupsTotal);
+  let mappedCupsTotal =
+    cupsTotal &&
+    cupsTotal.map((item) => {
+      const container = {};
+      let id = "id";
+      let reuasbleDividedCoffee = "reuasbleDividedCoffee";
 
-    let cupsEfficiancy = item.coffee_cups_total / item.reusable_cups_total;
+      let cupsEfficiancy = item.coffee_cups_total / item.reusable_cups_total;
+      // console.log(cupsEfficiancy);
 
-    if (cupsEfficiancy === 0 || cupsEfficiancy === Infinity) {
-      cupsEfficiancy = 0;
-    }
-    container[id] = item.id;
-    container[reuasbleDividedCoffee] = cupsEfficiancy;
-    return container;
-  });
+      if (isNaN(cupsEfficiancy) || cupsEfficiancy === Infinity) {
+        cupsEfficiancy = 0;
+      }
+      container[id] = item.id;
+      container[reuasbleDividedCoffee] = cupsEfficiancy;
+      return container;
+    });
 
   let efficiency = mappedCupsTotal.map((item) => {
     let container = {};

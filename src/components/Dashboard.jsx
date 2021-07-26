@@ -10,9 +10,11 @@ import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
 import LeaderBoard from "./LeaderBoard";
 import TreeCard from "./TreeCard";
+import LineChart from "./LineChart";
 
 export default function Dashboard() {
   const [user, setUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
   const [userDalies, setUserDalies] = useState([]);
   const [cupsTotal, setCupstotal] = useState([]);
   const [travelTotal, setTraveltotal] = useState([]);
@@ -26,7 +28,8 @@ export default function Dashboard() {
       },
     };
 
-    const getUser = await fetch("http://127.0.0.1:3000/api/user", auth);
+    const getUser = await fetch("http://127.0.0.1:3000/api/user_all", auth);
+    const getCurrentUser = await fetch("http://127.0.0.1:3000/api/user", auth);
 
     const getTravelTotal = await fetch(
       "http://127.0.0.1:3000/api/travel_total",
@@ -38,15 +41,15 @@ export default function Dashboard() {
       auth
     );
     const getCupsTotal = await fetch(
-      "http://127.0.0.1:3000/api/cups_total",
+      "http://127.0.0.1:3000/api/cups_total_all",
       auth
     );
     const getUserCo2Daily = await fetch(
-      "http://127.0.0.1:3000/api/user_co2_daily",
+      "http://127.0.0.1:3000/api/user_co2_daily_all",
       auth
     );
     const getCo2Total = await fetch(
-      "http://127.0.0.1:3000/api/user_co2_total",
+      "http://127.0.0.1:3000/api/user_co2_total_all",
       auth
     );
 
@@ -56,6 +59,7 @@ export default function Dashboard() {
     const userCo2Daily = await getUserCo2Daily.json();
     const co2Total = await getCo2Total.json();
     const user = await getUser.json();
+    const currentUser = await getCurrentUser.json();
 
     setCupstotal(cupsTotal);
     setUserDalies(userDaily);
@@ -63,6 +67,8 @@ export default function Dashboard() {
     setUserCo2Daily(userCo2Daily);
     setUserCo2Total(co2Total);
     setUser(user);
+    setCurrentUser(currentUser);
+    // await console.log(currentUser);
 
     // await console.log(
     //   user,
@@ -92,7 +98,6 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
@@ -104,6 +109,13 @@ export default function Dashboard() {
         co2Totals={userCo2Total}
         style={{ width: 500, height: 200 }}
       ></TreeCard>
+      <LineChart
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500 }}
+      ></LineChart>
 
       {/* <DashboardContainer />
       <DashboardContainer />
