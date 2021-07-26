@@ -15,6 +15,12 @@ import LeaderBoard from "./LeaderBoard";
 import TreeCard from "./TreeCard";
 import LineChart from "./LineChart";
 import Profile from "./Profile";
+import "../stylesheets/App.css";
+import AddIcon from "@material-ui/icons/Add";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import Tooltip from "@material-ui/core/Tooltip";
+import Fab from "@material-ui/core/Fab";
+import IconButton from "@material-ui/core/IconButton";
 
 export default function Dashboard() {
   const [user, setUser] = useState([]);
@@ -25,6 +31,7 @@ export default function Dashboard() {
   const [travelTotal, setTraveltotal] = useState([]);
   const [userCo2Daily, setUserCo2Daily] = useState([]);
   const [userCo2Total, setUserCo2Total] = useState([]);
+  const [currentUserCo2Total, setCurrentUserCo2Total] = useState([]);
 
   const fetchData = async () => {
     const auth = {
@@ -57,6 +64,10 @@ export default function Dashboard() {
       "http://127.0.0.1:3000/api/user_co2_total_all",
       auth
     );
+    const getCurrentCo2Total = await fetch(
+      "http://127.0.0.1:3000/api/user_co2_total",
+      auth
+    );
 
     const userDaily = await getUserDaily.json();
     const cupsTotal = await getCupsTotal.json();
@@ -65,6 +76,7 @@ export default function Dashboard() {
     const co2Total = await getCo2Total.json();
     const user = await getUser.json();
     const currentUser = await getCurrentUser.json();
+    const currentCo2Total = await getCurrentCo2Total.json();
 
     setCupstotal(cupsTotal);
     setUserDailies(userDaily);
@@ -73,29 +85,32 @@ export default function Dashboard() {
     setUserCo2Total(co2Total);
     setUser(user);
     setCurrentUser(currentUser);
-    // await console.log(currentUser);
-
-    // await console.log(
-    //   user,
-    //   userDaily,
-    //   // cupsTotal,
-    //   // travelTotal,
-    //   // userCo2Daily,
-    //   userCo2Total
-    // );
+    setCurrentUserCo2Total(currentCo2Total);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles((theme) => ({
     paperContainer: {
       display: "flex",
       justifyContent: "space-evenly",
       flexWrap: "wrap",
       height: "100vh",
       width: "100vw",
+      backgroundColor: "brown",
+    },
+    alignRight: {
+      justifyContent: "right",
+      padding: 0,
+      marginRight: 10,
+      alignSelf: "right",
+    },
+    moveIcon: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "flex-end",
     },
   }));
 
@@ -103,29 +118,46 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+<<<<<<< HEAD
       <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
+=======
+      {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
+      {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
+      {/* <Profile icon={<FaceIcon />} />
+>>>>>>> develop
       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-      <UserDailies userDailies={userDailies} fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */}
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-      <LeaderBoard
+      {/* <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
         style={{ width: 500 }}
-      ></LeaderBoard>
-      <TreeCard
-        co2Totals={userCo2Total}
-        style={{ width: 500, height: 200 }}
-      ></TreeCard>
-      <LineChart
+      ></LeaderBoard> */}
+
+      <div className="tree">
+        <div className={classes.moveIcon}>
+          <Tooltip
+            title={`The more Co2 you save,\n The larger your tree grows!`}
+          >
+            <IconButton aria-label="delete" className={classes.alignRight}>
+              <HelpOutlineIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+
+        <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
+      </div>
+
+      {/* <LineChart
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
         style={{ width: 500 }}
-      ></LineChart>
+      ></LineChart> */}
 
       {/* <DashboardContainer />
       <UserDailies />
