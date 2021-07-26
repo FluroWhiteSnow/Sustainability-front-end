@@ -32,11 +32,12 @@ export default function getUserEfficiency(props) {
     let co2DailyCount = "co2DailyCount";
 
     container[id] = item.id;
-    container[driveWalk] = (item.pt_co2_total + item.walk_co2_total) / 150;
+    container[driveWalk] = item.pt_co2_total + item.walk_co2_total;
     container[co2DailyCount] = 0;
 
     return container;
   });
+  // console.log(mappedcO2total);
 
   let mergedDatas = mappedcO2total.map((item) => {
     const container = { ...item };
@@ -46,14 +47,18 @@ export default function getUserEfficiency(props) {
         container.co2DailyCount++;
       }
     }
-    let timesCountWalk = container.driveDividedWalk * container.co2DailyCount;
+    let timesCountWalk =
+      container.driveDividedWalk / (150 * container.co2DailyCount);
     let name = "timesCountWalk";
+    // console.log(timesCountWalk);
     container[name] = timesCountWalk;
 
     return container;
   });
 
-  console.log(cupsTotal);
+  console.log(mergedDatas);
+
+  // console.log(cupsTotal);
   let mappedCupsTotal =
     cupsTotal &&
     cupsTotal.map((item) => {
@@ -61,7 +66,8 @@ export default function getUserEfficiency(props) {
       let id = "id";
       let reuasbleDividedCoffee = "reuasbleDividedCoffee";
 
-      let cupsEfficiancy = item.coffee_cups_total / item.reusable_cups_total;
+      let cupsEfficiancy = item.reusable_cups_total / item.coffee_cups_total;
+      // console.log(cupsEfficiancy);
       // console.log(cupsEfficiancy);
 
       if (isNaN(cupsEfficiancy) || cupsEfficiancy === Infinity) {
