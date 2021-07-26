@@ -10,9 +10,11 @@ import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
+import FaceIcon from "@material-ui/icons/Face";
 import LeaderBoard from "./LeaderBoard";
 import TreeCard from "./TreeCard";
 import LineChart from "./LineChart";
+import Profile from "./Profile";
 
 export default function Dashboard() {
   const [user, setUser] = useState([]);
@@ -101,8 +103,12 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+
       {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
       {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
+      <Profile icon={<FaceIcon />} />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} />
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <LeaderBoard
