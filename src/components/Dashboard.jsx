@@ -10,14 +10,16 @@ import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
+import FaceIcon from "@material-ui/icons/Face";
 import LeaderBoard from "./LeaderBoard";
 import TreeCard from "./TreeCard";
 import LineChart from "./LineChart";
+import Profile from "./Profile";
 
 export default function Dashboard() {
- const [user, setUser] = useState([]);
- const [currentUser, setCurrentUser] = useState([]);
- const [userDailies, setUserDailies] = useState([]);
+  const [user, setUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [userDailies, setUserDailies] = useState([]);
 
   const [cupsTotal, setCupstotal] = useState([]);
   const [travelTotal, setTraveltotal] = useState([]);
@@ -73,7 +75,6 @@ export default function Dashboard() {
     setCurrentUser(currentUser);
     // await console.log(currentUser);
 
-
     // await console.log(
     //   user,
     //   userDaily,
@@ -82,7 +83,6 @@ export default function Dashboard() {
     //   // userCo2Daily,
     //   userCo2Total
     // );
-
   };
 
   useEffect(() => {
@@ -103,11 +103,11 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-
+      <Profile icon={<FaceIcon />} />
       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-      <UserDailies userDailies={userDailies} fetchData={fetchData} />     
-       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-{/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      <UserDailies userDailies={userDailies} fetchData={fetchData} />
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
