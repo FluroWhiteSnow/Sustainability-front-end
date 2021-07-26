@@ -12,12 +12,12 @@ import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
 
 export default function Dashboard() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   const [userDailies, setUserDailies] = useState([]);
-  const [cupsTotal, setCupstotal] = useState({});
-  const [travelTotal, setTraveltotal] = useState({});
-  const [userCo2Daily, setUserCo2Daily] = useState({});
-  const [userCo2Total, setUserCo2Total] = useState({});
+  const [cupsTotal, setCupstotal] = useState([]);
+  const [travelTotal, setTraveltotal] = useState([]);
+  const [userCo2Daily, setUserCo2Daily] = useState([]);
+  const [userCo2Total, setUserCo2Total] = useState([]);
 
   const fetchData = async () => {
     const auth = {
