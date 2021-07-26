@@ -13,7 +13,7 @@ import WbCloudyIcon from "@material-ui/icons/WbCloudy";
 
 export default function Dashboard() {
   const [user, setUser] = useState({});
-  const [userDalies, setUserDalies] = useState({});
+  const [userDailies, setUserDailies] = useState([]);
   const [cupsTotal, setCupstotal] = useState({});
   const [travelTotal, setTraveltotal] = useState({});
   const [userCo2Daily, setUserCo2Daily] = useState({});
@@ -58,7 +58,7 @@ export default function Dashboard() {
     const user = await getUser.json();
 
     setCupstotal(cupsTotal);
-    setUserDalies(userDaily);
+    setUserDailies(userDaily);
     setTraveltotal(travelTotal);
     setUserCo2Daily(userCo2Daily);
     setUserCo2Total(co2Total);
@@ -85,7 +85,8 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      <UserDailies />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} />
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />

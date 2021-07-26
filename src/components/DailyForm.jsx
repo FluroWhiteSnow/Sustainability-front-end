@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -62,8 +60,15 @@ const useStyles = makeStyles({
 
 export default function DailyForm(props) {
   const [open, setOpen] = useState(false);
-  const [userDaily, setUserDaily] = useState({});
-
+  const initialState = props.userDaily || {
+    walk: false,
+    drive: false,
+    public_transport: false,
+    coffee_cups: 0,
+    reusable_cups: 0,
+  };
+  const [userDaily, setUserDaily] = useState(initialState);
+  console.log(userDaily);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -89,104 +94,143 @@ export default function DailyForm(props) {
     );
   }
 
-  function coffeeValue(value) {
-    return value;
+  function transportType() {
+    if (userDaily.drive) {
+      return "drive";
+    } else if (userDaily.walk) {
+      return "walk";
+    } else if (userDaily.public_transport) {
+      return "public_transport";
+    }
   }
 
-  function reusableValue(value) {
-    return value;
+  function handleTransportChange(e) {
+    setUserDaily({
+      ...userDaily,
+      drive: false,
+      public_transport: false,
+      walk: false,
+      [e.target.value]: true,
+    });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("HiHi");
+    const formData = new FormData(e.target);
+    const newData = {
+      user_daily: {
+        ...userDaily,
+        coffee_cups: parseInt(formData.get("coffee_slider")),
+        reusable_cups: parseInt(formData.get("reusable_slider")),
+      },
+    };
+    if (props.buttonName === "Edit") {
+      await fetch(
+        `http://127.0.0.1:3000/api/user_daily/${props.userDaily.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newData),
+        }
+      );
+    } else {
+      await fetch("http://127.0.0.1:3000/api/user_daily/", {
+        method: "Post",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newData),
+      });
+    }
+    props.fetchData();
   }
 
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
+    <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Edit
+        {props.buttonName}
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Your Daily Survey</DialogTitle>
-        <DialogContent>
-          <FormControl component="fieldset">
-            <FormLabel component="legend">
-              How did you travel to the office?
-            </FormLabel>
-            <br />
-            <RadioGroup
-              defaultValue="drive"
-              aria-label="transport_type"
-              name="customized-radios"
-            >
-              <FormControlLabel
-                value="Drive"
-                control={<StyledRadio />}
-                label="Drive"
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <DialogTitle id="form-dialog-title">Your Daily Survey</DialogTitle>
+          <DialogContent>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">
+                How did you travel to the office?
+              </FormLabel>
+              <br />
+              <RadioGroup
+                defaultValue="drive"
+                aria-label="transport_type"
+                name="customized-radios"
+                value={transportType()}
+                onChange={handleTransportChange}
+              >
+                <FormControlLabel
+                  value="drive"
+                  control={<StyledRadio />}
+                  label="Drive"
+                />
+                <FormControlLabel
+                  value="walk"
+                  control={<StyledRadio />}
+                  label="Walk or Cycle"
+                />
+                <FormControlLabel
+                  value="public_transport"
+                  control={<StyledRadio />}
+                  label="Public Transport"
+                />
+              </RadioGroup>
+              <br />
+              <Typography id="discrete-slider-small-steps" gutterBottom>
+                How many cups of coffee have you had?
+              </Typography>
+              <Slider
+                defaultValue={userDaily.coffee_cups || 1}
+                aria-labelledby="discrete-slider"
+                step={1}
+                min={0}
+                max={20}
+                valueLabelDisplay="auto"
+                name="coffee_slider"
               />
-              <FormControlLabel
-                value="Walk"
-                control={<StyledRadio />}
-                label="Walk"
+              <Typography id="discrete-slider-small-steps" gutterBottom>
+                How many times did you use a reusable cup?
+              </Typography>
+              <Slider
+                defaultValue={userDaily.reusable_cups || 1}
+                aria-labelledby="discrete-slider-small-steps"
+                step={1}
+                min={0}
+                max={20}
+                valueLabelDisplay="auto"
+                name="reusable_slider"
               />
-              <FormControlLabel
-                value="Public Transport"
-                control={<StyledRadio />}
-                label="Public Transport"
-              />
-              <FormControlLabel
-                value="Cycle"
-                control={<StyledRadio />}
-                label="Cycle"
-              />
-            </RadioGroup>
-            <br />
-            <Typography id="discrete-slider-small-steps" gutterBottom>
-              How many cups of coffee have you had?
-            </Typography>
-            <Slider
-              defaultValue={0}
-              getAriaValueText={coffeeValue}
-              aria-labelledby="discrete-slider-small-steps"
-              step={1}
-              marks
-              min={0}
-              max={10}
-              valueLabelDisplay="auto"
-            />
-            <Typography id="discrete-slider-small-steps" gutterBottom>
-              How many times did you use a reusable cup?
-            </Typography>
-            <Slider
-              defaultValue={0}
-              getAriaValueText={reusableValue}
-              aria-labelledby="discrete-slider-small-steps"
-              step={1}
-              marks
-              min={0}
-              max={10}
-              valueLabelDisplay="auto"
-            />
-          </FormControl>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button type="submit" onClick={handleClose} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
+            </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button type="submit" onClick={handleClose} color="primary">
+              Submit
+            </Button>
+          </DialogActions>
+        </form>
       </Dialog>
-    </form>
+    </div>
   );
 }
