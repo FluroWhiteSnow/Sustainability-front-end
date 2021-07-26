@@ -10,6 +10,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "login":
       localStorage.setItem("token", action.token);
+      // localStorage.setItem("username", action.username);
       return {
         ...state,
         loggedIn: true,

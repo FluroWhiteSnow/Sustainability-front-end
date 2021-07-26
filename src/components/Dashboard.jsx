@@ -9,6 +9,7 @@ import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";
 import LeaderBoard from "./LeaderBoard";
+import TreeCard from "./TreeCard";
 
 export default function Dashboard() {
   const [user, setUser] = useState([]);
@@ -99,6 +100,11 @@ export default function Dashboard() {
         cupsTotal={cupsTotal}
         style={{ width: 500 }}
       ></LeaderBoard>
+      <TreeCard
+        co2Totals={userCo2Total}
+        style={{ width: 500, height: 200 }}
+      ></TreeCard>
+
       {/* <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer />
