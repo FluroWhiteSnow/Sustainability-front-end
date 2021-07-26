@@ -5,6 +5,7 @@ import DashboardContainer from "./DashboardContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
 import UserDailies from "./UserDailies";
+import DailyForm from "./DailyForm";
 import { Grid, InputAdornment } from "@material-ui/core";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
@@ -14,9 +15,10 @@ import TreeCard from "./TreeCard";
 import LineChart from "./LineChart";
 
 export default function Dashboard() {
-  const [user, setUser] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
-  const [userDalies, setUserDalies] = useState([]);
+ const [user, setUser] = useState([]);
+ const [currentUser, setCurrentUser] = useState([]);
+ const [userDailies, setUserDailies] = useState([]);
+
   const [cupsTotal, setCupstotal] = useState([]);
   const [travelTotal, setTraveltotal] = useState([]);
   const [userCo2Daily, setUserCo2Daily] = useState([]);
@@ -63,7 +65,7 @@ export default function Dashboard() {
     const currentUser = await getCurrentUser.json();
 
     setCupstotal(cupsTotal);
-    setUserDalies(userDaily);
+    setUserDailies(userDaily);
     setTraveltotal(travelTotal);
     setUserCo2Daily(userCo2Daily);
     setUserCo2Total(co2Total);
@@ -102,9 +104,10 @@ export default function Dashboard() {
   return (
     <div className={classes.paperContainer}>
 
-
-      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} />     
+       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+{/* <JSONPretty data={userCo2Total}></JSONPretty> */}
       <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
@@ -125,9 +128,7 @@ export default function Dashboard() {
       ></LineChart>
 
       {/* <DashboardContainer />
-
       <UserDailies />
-
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer /> */}

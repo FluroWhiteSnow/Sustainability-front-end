@@ -37,26 +37,24 @@ export default function MetricCard(props) {
 
 // components
 
-{
-  /* <MetricCard
-total={cupsTotal.reusable_cups_total}
-metricType="Reusable Impact"
-icon={<LocalCafeIcon style={{ width: "100px", height: "100px" }} />}
-/>
-<MetricCard
-total={travelTotal.walk_total_km + travelTotal.pt_total_km}
-metricType="Commute Impact"
-icon={
-  <DirectionsBikeIcon style={{ width: "100px", height: "100px" }} />
-}
-/>
-<MetricCard
-total={
-  userCo2Total.walk_co2_total +
-  userCo2Total.pt_co2_total +
-  userCo2Total.reusable_cups_co2_total
-}
-metricType="CO2 Diverted"
-icon={<WbCloudyIcon style={{ width: "100px", height: "100px" }} />}
-/> */
-}
+//    <MetricCard
+// total={cupsTotal.reusable_cups_total}
+// metricType="Reusable Impact"
+// icon={<LocalCafeIcon style={{ width: "100px", height: "100px" }} />}
+// />
+// <MetricCard
+// total={travelTotal.walk_total_km + travelTotal.pt_total_km}
+// metricType="Commute Impact"
+// icon={
+//   <DirectionsBikeIcon style={{ width: "100px", height: "100px" }} />
+// }
+// />
+// <MetricCard
+// total={
+//   userCo2Total.walk_co2_total +
+//   userCo2Total.pt_co2_total +
+//   userCo2Total.reusable_cups_co2_total
+// }
+// metricType="CO2 Diverted"
+// icon={<WbCloudyIcon style={{ width: "100px", height: "100px" }} />}
+// />
