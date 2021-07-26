@@ -11,10 +11,13 @@ export default function getUserEfficiency(props) {
     let id = "id";
     let department = "department";
     let efficiency = "efficiency";
+    let distance = "distance";
     container[id] = item.id;
     container[name] = `${item.first_name} ${item.last_name}`;
     container[department] = item.department_code;
     container[efficiency] = 0;
+    container[distance] = item.distance_from_work;
+    // console.log(container);
 
     return container;
   });
@@ -25,18 +28,20 @@ export default function getUserEfficiency(props) {
   });
 
   let mappedcO2total = userCo2Data.map((item) => {
-    const container = {};
-
+    const container = { ...item };
     let id = "id";
     let driveWalk = "driveDividedWalk";
     let co2DailyCount = "co2DailyCount";
 
     container[id] = item.id;
     container[driveWalk] = item.pt_co2_total + item.walk_co2_total;
+    // console.log(item);
+
     container[co2DailyCount] = 0;
 
     return container;
   });
+
   // console.log(mappedcO2total);
 
   let mergedDatas = mappedcO2total.map((item) => {
@@ -47,18 +52,35 @@ export default function getUserEfficiency(props) {
         container.co2DailyCount++;
       }
     }
-    let timesCountWalk =
-      container.driveDividedWalk / (150 * container.co2DailyCount);
-    let name = "timesCountWalk";
-    // console.log(timesCountWalk);
-    container[name] = timesCountWalk;
+
+    let distanceMap = mappedUserData.map((item) => {
+      let timesCountWalk =
+        container.driveDividedWalk /
+        (150 * (container.co2DailyCount * item.distance));
+      let name = "timesCountWalk";
+
+      // console.log(
+      //   container.driveDividedWalk /
+      //     (140 * (container.co2DailyCount * item.distance))
+      // );
+      // console.log(container.driveDividedWalk);
+      // console.log(container.co2DailyCount);
+      // console.log(item.distance);
+      container[name] = timesCountWalk;
+
+      // console.log(container);
+      // console.log(item.distance);
+    });
+
+    // console.log(distanceMap);
+
+    // mappedUserData.distance
 
     return container;
   });
 
-  console.log(mergedDatas);
+  // console.log(mergedDatas);
 
-  // console.log(cupsTotal);
   let mappedCupsTotal =
     cupsTotal &&
     cupsTotal.map((item) => {
@@ -67,7 +89,6 @@ export default function getUserEfficiency(props) {
       let reuasbleDividedCoffee = "reuasbleDividedCoffee";
 
       let cupsEfficiancy = item.reusable_cups_total / item.coffee_cups_total;
-      // console.log(cupsEfficiancy);
       // console.log(cupsEfficiancy);
 
       if (isNaN(cupsEfficiancy) || cupsEfficiancy === Infinity) {
