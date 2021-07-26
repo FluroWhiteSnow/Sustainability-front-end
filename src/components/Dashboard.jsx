@@ -25,13 +25,19 @@ import IconButton from "@material-ui/core/IconButton";
 export default function Dashboard() {
   const [user, setUser] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [userDailies, setUserDailies] = useState([]);
 
+  // All User Totals and Dailies
+  const [userDailies, setUserDailies] = useState([]);
   const [cupsTotal, setCupstotal] = useState([]);
   const [travelTotal, setTraveltotal] = useState([]);
   const [userCo2Daily, setUserCo2Daily] = useState([]);
   const [userCo2Total, setUserCo2Total] = useState([]);
-  const [currentUserCo2Total, setCurrentUserCo2Total] = useState([]);
+
+  // Current User Totals and Dailies
+  const [currentUserCo2Total, setCurrentUserCo2Total] = useState({});
+  const [currentCupsTotal, setCurrentCupsTotal] = useState({});
+  const [currentTravelTotal, setCurrentTraveltotal] = useState({});
+  const [currentUserCo2Daily, setCurrentUserCo2Daily] = useState({});
 
   const fetchData = async () => {
     const auth = {
@@ -43,15 +49,11 @@ export default function Dashboard() {
     const getUser = await fetch("http://127.0.0.1:3000/api/user_all", auth);
     const getCurrentUser = await fetch("http://127.0.0.1:3000/api/user", auth);
 
-    const getTravelTotal = await fetch(
-      "http://127.0.0.1:3000/api/travel_total",
-      auth
-    );
-
     const getUserDaily = await fetch(
       "http://127.0.0.1:3000/api/user_daily",
       auth
     );
+    //All User Total and Daily API calls
     const getCupsTotal = await fetch(
       "http://127.0.0.1:3000/api/cups_total_all",
       auth
@@ -64,28 +66,42 @@ export default function Dashboard() {
       "http://127.0.0.1:3000/api/user_co2_total_all",
       auth
     );
+    //Current User Total and Daily API calls
     const getCurrentCo2Total = await fetch(
       "http://127.0.0.1:3000/api/user_co2_total",
       auth
     );
-
+    const getCurrentCupsTotal = await fetch(
+      "http://127.0.0.1:3000/api/cups_total",
+      auth
+    );
+    const getCurrentTravelTotal = await fetch(
+      "http://127.0.0.1:3000/api/travel_total",
+      auth
+    );
+    //All Users
+    const user = await getUser.json();
     const userDaily = await getUserDaily.json();
     const cupsTotal = await getCupsTotal.json();
-    const travelTotal = await getTravelTotal.json();
     const userCo2Daily = await getUserCo2Daily.json();
     const co2Total = await getCo2Total.json();
-    const user = await getUser.json();
-    const currentUser = await getCurrentUser.json();
-    const currentCo2Total = await getCurrentCo2Total.json();
 
     setCupstotal(cupsTotal);
     setUserDailies(userDaily);
-    setTraveltotal(travelTotal);
     setUserCo2Daily(userCo2Daily);
     setUserCo2Total(co2Total);
     setUser(user);
+
+    // Current User
+    const currentUser = await getCurrentUser.json();
+    const currentCo2Total = await getCurrentCo2Total.json();
+    const currentCupsTotal = await getCurrentCupsTotal.json();
+    const currentTravelTotal = await getCurrentTravelTotal.json();
+
     setCurrentUser(currentUser);
     setCurrentUserCo2Total(currentCo2Total);
+    setCurrentCupsTotal(currentCupsTotal);
+    setCurrentTraveltotal(currentTravelTotal);
   };
 
   useEffect(() => {
@@ -118,6 +134,41 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+      <div>
+        <MetricCard
+          unit="cups"
+          total={currentCupsTotal.reusable_cups_total}
+          metricType="Reusable Impact"
+          icon={<LocalCafeIcon style={{ width: "100px", height: "100px" }} />}
+        />
+        <MetricCard
+          unit="kms"
+          total={
+            currentTravelTotal.walk_total_km + currentTravelTotal.pt_total_km
+          }
+          metricType="Commute Impact"
+          icon={
+            <DirectionsBikeIcon style={{ width: "100px", height: "100px" }} />
+          }
+        />
+        <MetricCard
+          unit="g"
+          total={
+            currentUserCo2Total.walk_co2_total +
+            currentUserCo2Total.pt_co2_total +
+            currentUserCo2Total.reusable_cups_co2_total
+          }
+          metricType="CO2 Diverted"
+          icon={<WbCloudyIcon style={{ width: "100px", height: "100px" }} />}
+        />
+        <MetricCard
+          unit="days"
+          total={userDailies.length}
+          metricType="Total CO2 Offset Days"
+          icon={<WbCloudyIcon style={{ width: "100px", height: "100px" }} />}
+        />
+      </div>
+
       <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
       {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
       {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
