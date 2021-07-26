@@ -103,7 +103,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      <Profile icon={<FaceIcon />} />
+      <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
       <UserDailies userDailies={userDailies} fetchData={fetchData} />
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
