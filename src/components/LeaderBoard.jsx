@@ -110,6 +110,8 @@ export default function LeaderBoard(props) {
       return container;
     });
 
+    data.sort((a, b) => parseFloat(b.efficiency) - parseFloat(a.efficiency));
+
     return data;
   }
 
@@ -128,6 +130,9 @@ export default function LeaderBoard(props) {
         options={{
           search: false,
           showFirstLastPageButtons: false,
+          paging: false,
+          pageSize: 5,
+          sorting: false,
           rowStyle: (rowData) => ({
             backgroundColor:
               selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",

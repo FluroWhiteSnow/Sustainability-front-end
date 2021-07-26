@@ -92,7 +92,6 @@ export default function Dashboard() {
   return (
     <div className={classes.paperContainer}>
       {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-      <h1>Table</h1>
       <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
