@@ -1,73 +1,36 @@
 import React, { ReactDOM } from "react";
+import getUserEfficiency from "./GetUserEfficiency";
 
-// class ApexChart extends React.Component {
-//   constructor(props) {
-//     super(props);
+export default function LineChart(props) {
+  let getData = getUserEfficiency(props);
 
-//     this.state = {
-//       series: [
-//         {
-//           name: "Desktops",
-//           data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-//         },
-//       ],
-//       options: {
-//         chart: {
-//           height: 350,
-//           type: "line",
-//           zoom: {
-//             enabled: false,
-//           },
-//         },
-//         dataLabels: {
-//           enabled: false,
-//         },
-//         stroke: {
-//           curve: "straight",
-//         },
-//         title: {
-//           text: "Product Trends by Month",
-//           align: "left",
-//         },
-//         grid: {
-//           row: {
-//             colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-//             opacity: 0.5,
-//           },
-//         },
-//         xaxis: {
-//           categories: [
-//             "Jan",
-//             "Feb",
-//             "Mar",
-//             "Apr",
-//             "May",
-//             "Jun",
-//             "Jul",
-//             "Aug",
-//             "Sep",
-//           ],
-//         },
-//       },
-//     };
-//   }
+  function getDepartmentEfficiency(data) {
+    let accountingCount = data.reduce(function (n, item) {
+      return n + (item.department == "Accounting");
+    }, 0);
 
-//   render() {
-//     return (
-//       <div id="chart">
-//         <ReactApexChart
-//           options={this.state.options}
-//           series={this.state.series}
-//           type="line"
-//           height={350}
-//         />
-//       </div>
-//     );
-//   }
-// }
-// const domContainer = document.querySelector("#app");
-// ReactDOM.render(React.createElement(ApexChart), domContainer);
+    let financeCount = data.reduce(function (n, item) {
+      return n + (item.department == "Finance");
+    }, 0);
 
-export default function LineChart() {
+    let itCount = data.reduce(function (n, item) {
+      return n + (item.department == "IT");
+    }, 0);
+
+    console.log(accountingCount, financeCount, itCount);
+
+    let mapData = data.map((item) => {
+      let container = {};
+
+      let department = "department";
+      let efficiency = "efficiency";
+      container[department] = item.department;
+      container[efficiency] = item.efficiency;
+
+      console.log(container);
+    });
+  }
+
+  console.log(getDepartmentEfficiency(getData));
   return <div></div>;
 }
