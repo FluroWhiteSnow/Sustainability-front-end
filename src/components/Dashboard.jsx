@@ -99,7 +99,6 @@ export default function Dashboard() {
       flexWrap: "wrap",
       height: "100vh",
       width: "100vw",
-      backgroundColor: "brown",
     },
     alignRight: {
       justifyContent: "right",
@@ -134,7 +133,7 @@ export default function Dashboard() {
         style={{ width: 500 }}
       ></LeaderBoard> */}
 
-      <div className="tree">
+      {/* <div className="tree">
         <div className={classes.moveIcon}>
           <Tooltip
             title={`The more Co2 you save,\n The larger your tree grows!`}
@@ -146,15 +145,15 @@ export default function Dashboard() {
         </div>
 
         <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
-      </div>
+      </div> */}
 
-      {/* <LineChart
+      <LineChart
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
-        style={{ width: 500 }}
-      ></LineChart> */}
+        style={{ width: 500, height: 500 }}
+      ></LineChart>
 
       {/* <DashboardContainer />
       <UserDailies />
