@@ -68,7 +68,6 @@ export default function DailyForm(props) {
     reusable_cups: 0,
   };
   const [userDaily, setUserDaily] = useState(initialState);
-  console.log(userDaily);
   const handleClickOpen = () => {
     setOpen(true);
   };
