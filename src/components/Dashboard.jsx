@@ -16,6 +16,11 @@ import TreeCard from "./TreeCard";
 import LineChart from "./LineChart";
 import Profile from "./Profile";
 import "../stylesheets/App.css";
+import AddIcon from "@material-ui/icons/Add";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import Tooltip from "@material-ui/core/Tooltip";
+import Fab from "@material-ui/core/Fab";
+import IconButton from "@material-ui/core/IconButton";
 
 export default function Dashboard() {
   const [user, setUser] = useState([]);
@@ -87,7 +92,7 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles((theme) => ({
     paperContainer: {
       display: "flex",
       justifyContent: "space-evenly",
@@ -95,6 +100,17 @@ export default function Dashboard() {
       height: "100vh",
       width: "100vw",
       backgroundColor: "brown",
+    },
+    alignRight: {
+      justifyContent: "right",
+      padding: 0,
+      marginRight: 10,
+      alignSelf: "right",
+    },
+    moveIcon: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "flex-end",
     },
   }));
 
@@ -118,6 +134,16 @@ export default function Dashboard() {
       ></LeaderBoard> */}
 
       <div className="tree">
+        <div className={classes.moveIcon}>
+          <Tooltip
+            title={`The more Co2 you save,\n The larger your tree grows!`}
+          >
+            <IconButton aria-label="delete" className={classes.alignRight}>
+              <HelpOutlineIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+
         <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
       </div>
 
