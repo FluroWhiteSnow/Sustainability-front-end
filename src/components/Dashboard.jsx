@@ -103,6 +103,9 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
+
+      {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
+      {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
       <Profile icon={<FaceIcon />} />
       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
       <UserDailies userDailies={userDailies} fetchData={fetchData} />
