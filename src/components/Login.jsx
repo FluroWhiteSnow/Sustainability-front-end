@@ -150,6 +150,7 @@ export default function Login({ history }) {
               <TextField
                 label="Password"
                 margin="normal"
+                type="Password"
                 value={loginForm.password}
                 onChange={changeInput}
                 name="password"
