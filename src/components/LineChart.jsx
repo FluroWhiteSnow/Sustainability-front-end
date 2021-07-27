@@ -2,12 +2,14 @@ import React, { ReactDOM } from "react";
 import getUserEfficiency from "./GetUserEfficiency";
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { Chart } from "chart.js";
 
 // const domContainer = document.querySelector("#app");
 // ReactDOM.render(React.createElement(ApexChart), domContainer);
 
 export default function LineChart(props) {
   let getData = getUserEfficiency(props);
+
   const [graphData, setGraphData] = useState([]);
 
   function getDepartmentEfficiency(data) {
@@ -95,33 +97,6 @@ export default function LineChart(props) {
           departmentEfficiencyCalc.financeCount) *
         100,
     };
-    // console.log(efficiency);
-
-    // let graphObject = {
-    //   series: [
-    //     {
-    //       data: [efficiency.iT, efficiency.accoutning, efficiency.finance],
-    //     },
-    //   ],
-    //   options: {
-    //     chart: {
-    //       type: "bar",
-    //       height: 350,
-    //     },
-    //     plotOptions: {
-    //       bar: {
-    //         borderRadius: 4,
-    //         horizontal: true,
-    //       },
-    //     },
-    //     dataLabels: {
-    //       enabled: false,
-    //     },
-    //     xaxis: {
-    //       categories: ["IT", "Accounting", "Finance"],
-    //     },
-    //   },
-    // };
 
     setGraphData(efficiency);
     // setGraphData(graphObject);
@@ -130,12 +105,10 @@ export default function LineChart(props) {
 
   useEffect(() => {
     getDepartmentEfficiency(getData);
-  }, []);
+  }, [props]);
 
-  console.log(graphData);
-  const options = {
-    indexAxis: "y",
-  };
+  // console.log(graphData);
+
   // console.log(getDepartmentEfficiency(getData));
   return (
     <div>

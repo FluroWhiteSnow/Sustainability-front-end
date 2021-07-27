@@ -117,7 +117,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.paperContainer}>
-      <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
+      {/* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */}
       {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
       {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
       {/* <Profile icon={<FaceIcon />} />
@@ -147,13 +147,13 @@ export default function Dashboard() {
         <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
       </div> */}
 
-      <LineChart
+      {/* <LineChart
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
         style={{ width: 500, height: 500 }}
-      ></LineChart>
+      ></LineChart> */}
 
       {/* <DashboardContainer />
       <UserDailies />
