@@ -34,7 +34,7 @@ export default function UserDailies(props) {
   const classes = useStyles();
 
   const deleteData = async (id) => {
-    await fetch(`http://127.0.0.1:3000/api/user_daily/${id}`, {
+    await fetch(`http://sustainability-app.herokuapp.com/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +50,7 @@ export default function UserDailies(props) {
       },
     };
 
-    fetch(`http://127.0.0.1:3000/api/user_daily/${id}`, {
+    fetch(`http://sustainability-app.herokuapp.com/${id}`, {
       method: "PUT",
       auth,
     });
@@ -110,7 +110,7 @@ export default function UserDailies(props) {
       {props.userDailies &&
         props.userDailies
           .sort((a, b) => b.id - a.id)
-          .slice(0, 3)
+          .slice(0, 30)
           .map((userDaily) => (
             <Card
               key={userDaily.id}

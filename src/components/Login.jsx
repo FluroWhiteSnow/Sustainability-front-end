@@ -42,13 +42,16 @@ export default function Login({ history }) {
   };
 
   const sendLoginRequest = async () => {
-    const response = await fetch("http://127.0.0.1:3000/api/auth/sign_in", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginForm),
-    });
+    const response = await fetch(
+      "http://sustainability-app.herokuapp.com/api/auth/sign_in",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginForm),
+      }
+    );
     const data = await response.json();
     if (data.jwt) {
       await console.log(data);
@@ -178,7 +181,6 @@ export default function Login({ history }) {
                     href="/sign-up"
                     onClick={changeInput}
                     variant="SignUp"
-                    // to="/sign-up"
                     className="Sign-Up-Log-In-Link"
                   >
                     Sign Up

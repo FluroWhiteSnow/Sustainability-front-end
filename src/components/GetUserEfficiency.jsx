@@ -114,7 +114,5 @@ export default function getUserEfficiency(props) {
   });
 
   data.sort((a, b) => parseFloat(b.efficiency) - parseFloat(a.efficiency));
-
-  // console.log(data);
   return data;
 }

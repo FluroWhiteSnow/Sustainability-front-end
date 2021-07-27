@@ -98,13 +98,16 @@ export default function SignUp({ history }) {
   }
 
   async function postSignUp() {
-    const response = await fetch("http://127.0.0.1:3000/api/auth/sign_up", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signUpForm),
-    });
+    const response = await fetch(
+      "http://sustainability-app.herokuapp.com/api/auth/sign_up",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signUpForm),
+      }
+    );
     const data = await response.json();
     if (data.jwt) {
       authDispatch({ type: "login", token: data.jwt, value: data });
@@ -129,7 +132,6 @@ export default function SignUp({ history }) {
             className="container"
             item
             xs={12}
-            // sm={3}
             alignItems="center"
             direction="column"
             justifyContent="center"
