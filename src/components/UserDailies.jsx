@@ -7,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import JSONPretty from "react-json-pretty";
 import DailyForm from "./DailyForm";
+import Pagination from "@material-ui/lab/Pagination";
+import DoneIcon from "@material-ui/icons/Done";
+import CloseIcon from "@material-ui/icons/Close";
 import "../stylesheets/App.css";
 
 const useStyles = makeStyles({
@@ -62,91 +65,79 @@ export default function UserDailies(props) {
     }
   }
 
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
   return (
     <div className={classes.container}>
       <Card className={classes.root} variant="outlined">
-        <div className="main-wrap">
-          <div className="cell cell-one">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Date
-            </Typography>
-          </div>
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Transportation Type
-            </Typography>
-          </div>
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Number of Coffees
-            </Typography>
-          </div>
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Number of Reusable Cups
-            </Typography>
-          </div>
-        </div>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          component="p"
+        >
+          Date
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          component="p"
+        >
+          Transportation Type
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          component="p"
+        >
+          Number of Coffees
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          component="p"
+        >
+          Number of Reusable Cups
+        </Typography>
       </Card>
 
       {props.userDailies &&
         props.userDailies.map((userDaily) => (
           <Card key={userDaily.id} className={classes.root} variant="outlined">
-            <div className="main-wrap">
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.created_at.substring(0, 10)}
-                </Typography>
-              </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.walk && "Walk"}{" "}
-                  {userDaily.public_transport && "Public Transport"}{" "}
-                  {userDaily.drive && "Drive"}
-                </Typography>
-              </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.coffee_cups}
-                </Typography>
-              </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.reusable_cups}
-                </Typography>
-              </div>
-            </div>
-            <div className="button-cell">
-              <DailyForm
-                buttonName="Edit"
-                userDaily={userDaily}
-                fetchData={props.fetchData}
-              />
-              <Button
-                onClick={() => handleClick("delete", userDaily.id)}
-                size="small"
-              >
-                Delete
-              </Button>
-            </div>
+
+            <Typography variant="body2" component="p">
+              {userDaily.created_at.substring(0, 10)}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {userDaily.walk && "Walk"}{" "}
+              {userDaily.public_transport && "Public Transport"}{" "}
+              {userDaily.drive && "Drive"}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {userDaily.coffee_cups}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {userDaily.reusable_cups}
+            </Typography>
+            <DailyForm
+              buttonName="Edit"
+              buttonDisplay={<DoneIcon />}
+              userDaily={userDaily}
+              fetchData={props.fetchData}
+            />
+            <Button
+              onClick={() => handleClick("delete", userDaily.id)}
+              variant="outlined"
+              color="primary"
+            >
+              <CloseIcon />
+            </Button>
+
           </Card>
         ))}
+      {/* <Pagination count={10} page={page} onChange={handleChange} /> */}
     </div>
   );
 }
