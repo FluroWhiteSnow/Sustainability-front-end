@@ -68,26 +68,81 @@ export default function Profile(props) {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <form
-          onSubmit={(e) => {
-            handleSubmit(e);
-          }}
-        >
-          <DialogTitle id="form-dialog-title">{`Hello ${props.user.first_name}`}</DialogTitle>
-          <DialogContentText>
-            To edit your profile, please enter your new details. If you have
-            changed departments, please contact human resources department.
-          </DialogContentText>
-          <DialogContent class="dialog-content-container">
-            <TextField
-              id="first_name"
-              name="first_name"
-              label="First Name"
-              type="Text"
-              variant="outlined"
-              fullWidth
-            />
+        <div className="form-wrap">
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            <DialogTitle id="form-dialog-title">{`Hello ${props.user.first_name}`}</DialogTitle>
+            <DialogContentText>
+              To edit your profile, please enter your new details. If you have
+              changed departments, please contact human resources department.
+            </DialogContentText>
+            <DialogContent class="dialog-content-container">
+              <TextField
+                id="first_name"
+                name="first_name"
+                label="First Name"
+                type="Text"
+                variant="outlined"
+                fullWidth
+              />
+              <br />
+              <br />
+              <TextField
+                id="last_name"
+                name="last_name"
+                label="Last Name"
+                type="Text"
+                variant="outlined"
+                fullWidth
+              />
+              <br />
+              <br />
+              <TextField
+                id="email"
+                name="email"
+                label="Email"
+                type="Text"
+                variant="outlined"
+                fullWidth
+              />
+              <br />
+              <br />
+              <TextField
+                id="password"
+                name="password"
+                label="Password"
+                type="password"
+                variant="outlined"
+                fullWidth
+              />
+              <br />
+              <br />
+              <TextField
+                id="distance_from_work"
+                name="distance_from_work"
+                label="Distance From Work"
+                type="number"
+                variant="outlined"
+                fullWidth
+              />
+            </DialogContent>
             <br />
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Sign Out
+              </Button>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button type="submit" onClick={handleClose} color="primary">
+                Update
+              </Button>
+            </DialogActions>
+          </form>
+        </div>
             <br />
             <TextField
               id="last_name"
