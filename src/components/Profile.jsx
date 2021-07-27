@@ -1,4 +1,6 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "./contexts/AuthProvider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,6 +12,16 @@ import "./../stylesheets/profile.css";
 
 export default function Profile(props) {
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
+
+  const { authDispatch } = useAuth();
+
+  const handleSignOut = () => {
+    authDispatch({
+      type: "sign-out",
+    });
+    history.push("/");
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -118,7 +130,7 @@ export default function Profile(props) {
           </DialogContent>
           <br />
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleSignOut} color="primary">
               Sign Out
             </Button>
             <Button onClick={handleClose} color="primary">
