@@ -126,7 +126,6 @@ export default function Dashboard() {
   const classes = useStyles();
 
   return (
-
     <div className={classes.paperContainer}>
       {/* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */}
       {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
@@ -294,38 +293,23 @@ export default function Dashboard() {
   );
 
   {
-    /* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */
-  }
-  {
-    /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
-  }
-  {
-    /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
-  }
-  {
-    /* <Profile icon={<FaceIcon />} />
+    /* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */}
+      {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
+      {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
+      {/* <Profile icon={<FaceIcon />} />
       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
-  }
-  {
-    /* <JSONPretty data={userCo2Total}></JSONPretty> */
-  }
-  {
-    /* <JSONPretty data={userCo2Total}></JSONPretty> */
-  }
-  {
-    /* <LeaderBoard
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */}
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      {/* <LeaderBoard
         users={user}
         userCo2Dalies={userCo2Daily}
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
         style={{ width: 500 }}
-      ></LeaderBoard> */
-  }
+      ></LeaderBoard> */}
 
-  // tree
-  {
-    /* <div className="tree">
+      {/* <div className="tree">
         <div className={classes.moveIcon}>
           <Tooltip
             title={`The more Co2 you save,\n The larger your tree grows!`}
@@ -386,38 +370,34 @@ export default function Dashboard() {
 
 // metric card
 
-  }
-
-  {
-    /* <DashboardContainer />
+{
+  /* <DashboardContainer />
       <UserDailies />
       <DashboardContainer />
       <DashboardContainer />
       <DashboardContainer /> */
-  }
+}
 
-  {
-    /* <LeaderBoard
+{
+  /* <LeaderBoard
        users={user}
       userCo2Dalies={userCo2Daily}
       co2Totals={userCo2Total}
        cupsTotal={cupsTotal}
        style={{ width: 500 }}
      ></LeaderBoard>  */
-  }
-
-  // {
-  //   /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
-  // }
-  // {
-  /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
-  // }
-  // {
-  //   /* <Profile icon={<FaceIcon />} />
-  //       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-  //       <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
-  // }
-
-  // metric card
 }
 
+// {
+//   /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+// }
+// {
+/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
+// }
+// {
+//   /* <Profile icon={<FaceIcon />} />
+//       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+//       <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+// }
+
+// metric card

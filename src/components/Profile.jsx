@@ -1,6 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useAuth } from "./contexts/AuthProvider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -12,16 +10,6 @@ import "./../stylesheets/profile.css";
 
 export default function Profile(props) {
   const [open, setOpen] = React.useState(false);
-  const history = useHistory();
-
-  const { authDispatch } = useAuth();
-
-  const handleSignOut = () => {
-    authDispatch({
-      type: "sign-out",
-    });
-    history.push("/");
-  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -143,59 +131,6 @@ export default function Profile(props) {
             </DialogActions>
           </form>
         </div>
-            <br />
-            <TextField
-              id="last_name"
-              name="last_name"
-              label="Last Name"
-              type="Text"
-              variant="outlined"
-              fullWidth
-            />
-            <br />
-            <br />
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              type="Text"
-              variant="outlined"
-              fullWidth
-            />
-            <br />
-            <br />
-            <TextField
-              id="password"
-              name="password"
-              label="Password"
-              type="password"
-              variant="outlined"
-              fullWidth
-            />
-            <br />
-            <br />
-            <TextField
-              id="distance_from_work"
-              name="distance_from_work"
-              label="Distance From Work"
-              type="number"
-              variant="outlined"
-              fullWidth
-            />
-          </DialogContent>
-          <br />
-          <DialogActions>
-            <Button onClick={handleSignOut} color="primary">
-              Sign Out
-            </Button>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button type="submit" onClick={handleClose} color="primary">
-              Update
-            </Button>
-          </DialogActions>
-        </form>
       </Dialog>
     </div>
   );
