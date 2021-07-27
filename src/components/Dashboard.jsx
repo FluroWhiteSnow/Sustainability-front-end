@@ -31,7 +31,6 @@ export default function Dashboard() {
   // All User Totals and Dailies
   const [userDailies, setUserDailies] = useState([]);
   const [cupsTotal, setCupstotal] = useState([]);
-  const [travelTotal, setTraveltotal] = useState([]);
   const [userCo2Daily, setUserCo2Daily] = useState([]);
   const [userCo2Total, setUserCo2Total] = useState([]);
 
@@ -39,7 +38,6 @@ export default function Dashboard() {
   const [currentUserCo2Total, setCurrentUserCo2Total] = useState({});
   const [currentCupsTotal, setCurrentCupsTotal] = useState({});
   const [currentTravelTotal, setCurrentTraveltotal] = useState({});
-  const [currentUserCo2Daily, setCurrentUserCo2Daily] = useState({});
 
   const fetchData = async () => {
     const auth = {
@@ -48,37 +46,43 @@ export default function Dashboard() {
       },
     };
 
-    const getUser = await fetch("http://127.0.0.1:3000/api/user_all", auth);
-    const getCurrentUser = await fetch("http://127.0.0.1:3000/api/user", auth);
+    const getUser = await fetch(
+      "http://sustainability-app.herokuapp.com/api/user_all",
+      auth
+    );
+    const getCurrentUser = await fetch(
+      "http://sustainability-app.herokuapp.com/api/user",
+      auth
+    );
 
     const getUserDaily = await fetch(
-      "http://127.0.0.1:3000/api/user_daily",
+      "http://sustainability-app.herokuapp.com/api/user_daily",
       auth
     );
     //All User Total and Daily API calls
     const getCupsTotal = await fetch(
-      "http://127.0.0.1:3000/api/cups_total_all",
+      "http://sustainability-app.herokuapp.com/api/cups_total_all",
       auth
     );
     const getUserCo2Daily = await fetch(
-      "http://127.0.0.1:3000/api/user_co2_daily_all",
+      "http://sustainability-app.herokuapp.com/api/user_co2_daily_all",
       auth
     );
     const getCo2Total = await fetch(
-      "http://127.0.0.1:3000/api/user_co2_total_all",
+      "http://sustainability-app.herokuapp.com/api/user_co2_total_all",
       auth
     );
     //Current User Total and Daily API calls
     const getCurrentCo2Total = await fetch(
-      "http://127.0.0.1:3000/api/user_co2_total",
+      "http://sustainability-app.herokuapp.com/api/user_co2_total",
       auth
     );
     const getCurrentCupsTotal = await fetch(
-      "http://127.0.0.1:3000/api/cups_total",
+      "http://sustainability-app.herokuapp.com/api/cups_total",
       auth
     );
     const getCurrentTravelTotal = await fetch(
-      "http://127.0.0.1:3000/api/travel_total",
+      "http://sustainability-app.herokuapp.com/api/travel_total",
       auth
     );
     //All Users
@@ -104,7 +108,6 @@ export default function Dashboard() {
     setCurrentUserCo2Total(currentCo2Total);
     setCurrentCupsTotal(currentCupsTotal);
     setCurrentTraveltotal(currentTravelTotal);
-    await console.log(userCo2Daily, userCo2Total, user, cupsTotal);
   };
 
   useEffect(() => {
@@ -181,7 +184,6 @@ export default function Dashboard() {
                       style={{ width: "50px", height: "50px" }}
                     />
                   }
-                  // background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
                 />
                 <MetricCard
                   unit="g"

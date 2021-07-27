@@ -45,14 +45,17 @@ export default function Profile(props) {
       },
     };
 
-    await fetch(`http://127.0.0.1:3000/api/user/${props.user.id}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    });
+    await fetch(
+      `http://sustainability-app.herokuapp.com/api/user/${props.user.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newData),
+      }
+    );
     props.fetchData();
   }
 

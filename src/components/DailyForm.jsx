@@ -125,7 +125,7 @@ export default function DailyForm(props) {
     };
     if (props.buttonName === "Edit") {
       await fetch(
-        `http://127.0.0.1:3000/api/user_daily/${props.userDaily.id}`,
+        `http://sustainability-app.herokuapp.com/api/user_daily/${props.userDaily.id}`,
         {
           method: "PATCH",
           headers: {
@@ -136,7 +136,7 @@ export default function DailyForm(props) {
         }
       );
     } else {
-      await fetch("http://127.0.0.1:3000/api/user_daily/", {
+      await fetch("http://sustainability-app.herokuapp.com/api/user_daily/", {
         method: "Post",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -181,7 +181,6 @@ export default function DailyForm(props) {
               </FormLabel>
               <br />
               <RadioGroup
-                defaultValue="drive"
                 aria-label="transport_type"
                 name="customized-radios"
                 value={transportType()}

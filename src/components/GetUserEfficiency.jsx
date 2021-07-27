@@ -3,7 +3,6 @@ export default function getUserEfficiency(props) {
   let cO2DailyData = props.userCo2Dalies;
   let userCo2Data = props.co2Totals;
   let cupsTotal = props.cupsTotal;
-  console.log(cO2DailyData);
 
   let mappedUserData = userData.map((item) => {
     const container = {};
@@ -18,7 +17,6 @@ export default function getUserEfficiency(props) {
     container[department] = item.department_code;
     container[efficiency] = 0;
     container[distance] = item.distance_from_work;
-    // console.log(container);
 
     return container;
   });
@@ -36,14 +34,10 @@ export default function getUserEfficiency(props) {
 
     container[id] = item.id;
     container[driveWalk] = item.pt_co2_total + item.walk_co2_total;
-    // console.log(item);
-
     container[co2DailyCount] = 0;
 
     return container;
   });
-
-  // console.log(mappedcO2total);
 
   let mergedDatas = mappedcO2total.map((item) => {
     const container = { ...item };
@@ -74,7 +68,6 @@ export default function getUserEfficiency(props) {
       let reuasbleDividedCoffee = "reuasbleDividedCoffee";
 
       let cupsEfficiancy = item.reusable_cups_total / item.coffee_cups_total;
-      // console.log(cupsEfficiancy);
 
       if (isNaN(cupsEfficiancy) || cupsEfficiancy === Infinity) {
         cupsEfficiancy = 0;
@@ -114,7 +107,5 @@ export default function getUserEfficiency(props) {
   });
 
   data.sort((a, b) => parseFloat(b.efficiency) - parseFloat(a.efficiency));
-
-  // console.log(data);
   return data;
 }

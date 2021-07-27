@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import MaterialTable from "material-table";
 import getUserEfficiency from "./GetUserEfficiency";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 export default function LeaderBoard(props) {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -14,8 +13,6 @@ export default function LeaderBoard(props) {
   ];
 
   let data = getUserEfficiency(props).slice(0, 6);
-
-  console.log(data);
 
   return (
     <div style={{ minWidth: "100%" }}>
@@ -38,11 +35,6 @@ export default function LeaderBoard(props) {
           rowStyle: {
             fontSize: 14,
           },
-
-          // rowStyle: (rowData) => ({
-          //   backgroundColor:
-          //     selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
-          // }),
         }}
       />
     </div>

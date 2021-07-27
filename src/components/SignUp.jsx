@@ -7,7 +7,6 @@ import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import { makeStyles } from "@material-ui/core/styles";
 import PinDropOutlinedIcon from "@material-ui/icons/PinDropOutlined";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -98,13 +97,16 @@ export default function SignUp({ history }) {
   }
 
   async function postSignUp() {
-    const response = await fetch("http://127.0.0.1:3000/api/auth/sign_up", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signUpForm),
-    });
+    const response = await fetch(
+      "http://sustainability-app.herokuapp.com/api/auth/sign_up",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signUpForm),
+      }
+    );
     const data = await response.json();
     if (data.jwt) {
       authDispatch({ type: "login", token: data.jwt, value: data });
@@ -129,7 +131,6 @@ export default function SignUp({ history }) {
             className="container"
             item
             xs={12}
-            // sm={3}
             alignItems="center"
             direction="column"
             justifyContent="center"

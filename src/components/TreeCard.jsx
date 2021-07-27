@@ -14,10 +14,6 @@ export default function TreeCard(props) {
     props.co2Totals.reusable_cups_co2_total +
     props.co2Totals.walk_co2_total;
 
-  console.log(data);
-
-  //   let data = 210;
-
   if (!(data > 50) && data < 51) {
     return <img src={bg1} className="tree-img" />;
   } else if (!(data > 100) && data < 101) {
