@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import JSONPretty from "react-json-pretty";
 import DailyForm from "./DailyForm";
+import "../stylesheets/App.css";
 
 const useStyles = makeStyles({
   container: {
@@ -14,13 +15,16 @@ const useStyles = makeStyles({
   },
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    flexDirection: "row",
+    justifyContent: "flex-start",
     alignItems: "center",
-    minWidth: "80%",
+    minWidth: "100%",
     minHeight: "5%",
+    paddingLeft: 20,
   },
   title: {
     fontSize: 14,
+    width: "fitContent",
   },
 });
 
@@ -61,66 +65,86 @@ export default function UserDailies(props) {
   return (
     <div className={classes.container}>
       <Card className={classes.root} variant="outlined">
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          component="p"
-        >
-          Date
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          component="p"
-        >
-          Transportation Type
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          component="p"
-        >
-          Number of Coffees
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          component="p"
-        >
-          Number of Reusable Cups
-        </Typography>
-        {/* <div />
-        <div /> */}
+        <div className="main-wrap">
+          <div className="cell cell-one">
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              component="p"
+            >
+              Date
+            </Typography>
+          </div>
+          <div className="cell">
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              component="p"
+            >
+              Transportation Type
+            </Typography>
+          </div>
+          <div className="cell">
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              component="p"
+            >
+              Number of Coffees
+            </Typography>
+          </div>
+          <div className="cell">
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              component="p"
+            >
+              Number of Reusable Cups
+            </Typography>
+          </div>
+        </div>
       </Card>
 
       {props.userDailies &&
         props.userDailies.map((userDaily) => (
           <Card key={userDaily.id} className={classes.root} variant="outlined">
-            <Typography variant="body2" component="p">
-              {userDaily.created_at.substring(0, 10)}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {userDaily.walk && "Walk"}{" "}
-              {userDaily.public_transport && "Public Transport"}{" "}
-              {userDaily.drive && "Drive"}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {userDaily.coffee_cups}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {userDaily.reusable_cups}
-            </Typography>
-            <DailyForm
-              buttonName="Edit"
-              userDaily={userDaily}
-              fetchData={props.fetchData}
-            />
-            <Button
-              onClick={() => handleClick("delete", userDaily.id)}
-              size="small"
-            >
-              Delete
-            </Button>
+            <div className="main-wrap">
+              <div className="cell">
+                <Typography variant="body2" component="p">
+                  {userDaily.created_at.substring(0, 10)}
+                </Typography>
+              </div>
+              <div className="cell">
+                <Typography variant="body2" component="p">
+                  {userDaily.walk && "Walk"}{" "}
+                  {userDaily.public_transport && "Public Transport"}{" "}
+                  {userDaily.drive && "Drive"}
+                </Typography>
+              </div>
+              <div className="cell">
+                <Typography variant="body2" component="p">
+                  {userDaily.coffee_cups}
+                </Typography>
+              </div>
+              <div className="cell">
+                <Typography variant="body2" component="p">
+                  {userDaily.reusable_cups}
+                </Typography>
+              </div>
+            </div>
+            <div className="button-cell">
+              <DailyForm
+                buttonName="Edit"
+                userDaily={userDaily}
+                fetchData={props.fetchData}
+              />
+              <Button
+                onClick={() => handleClick("delete", userDaily.id)}
+                size="small"
+              >
+                Delete
+              </Button>
+            </div>
           </Card>
         ))}
     </div>

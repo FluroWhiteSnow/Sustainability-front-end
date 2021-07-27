@@ -49,3 +49,19 @@
   border-radius: 7px;
   margin-bottom: 7px;
 }
+
+.main-wrap {
+  width: 80%;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.cell {
+  width: 25%;
+}
+
+.button-cell {
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+}
