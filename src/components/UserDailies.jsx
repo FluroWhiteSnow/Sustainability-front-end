@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import JSONPretty from "react-json-pretty";
 import DailyForm from "./DailyForm";
 import "../stylesheets/App.css";
+import DoneIcon from "@material-ui/icons/Done";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles({
   container: {
@@ -135,14 +137,17 @@ export default function UserDailies(props) {
             <div className="button-cell">
               <DailyForm
                 buttonName="Edit"
+                buttonDisplay={<DoneIcon />}
                 userDaily={userDaily}
                 fetchData={props.fetchData}
               />
               <Button
                 onClick={() => handleClick("delete", userDaily.id)}
                 size="small"
+                variant="outlined"
+                color="primary"
               >
-                Delete
+                <CloseIcon />
               </Button>
             </div>
           </Card>
