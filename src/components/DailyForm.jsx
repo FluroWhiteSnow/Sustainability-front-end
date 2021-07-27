@@ -150,7 +150,15 @@ export default function DailyForm(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="outlined"
+        color="primary"
+        style={{
+          backgroundColor: "white",
+          color: "#404040",
+        }}
+        onClick={handleClickOpen}
+      >
         {props.buttonDisplay}
       </Button>
       <Dialog
@@ -163,7 +171,9 @@ export default function DailyForm(props) {
             handleSubmit(e);
           }}
         >
-          <DialogTitle id="form-dialog-title">Your Daily Survey</DialogTitle>
+          <DialogTitle style={{ padding: "20px" }} id="form-dialog-title">
+            Your Daily Survey
+          </DialogTitle>
           <DialogContent>
             <FormControl component="fieldset">
               <FormLabel component="legend">

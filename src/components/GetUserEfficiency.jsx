@@ -3,6 +3,7 @@ export default function getUserEfficiency(props) {
   let cO2DailyData = props.userCo2Dalies;
   let userCo2Data = props.co2Totals;
   let cupsTotal = props.cupsTotal;
+  console.log(cO2DailyData);
 
   let mappedUserData = userData.map((item) => {
     const container = {};
@@ -59,27 +60,11 @@ export default function getUserEfficiency(props) {
         (150 * (container.co2DailyCount * item.distance));
       let name = "timesCountWalk";
 
-      // console.log(
-      //   container.driveDividedWalk /
-      //     (140 * (container.co2DailyCount * item.distance))
-      // );
-      // console.log(container.driveDividedWalk);
-      // console.log(container.co2DailyCount);
-      // console.log(item.distance);
       container[name] = timesCountWalk;
-
-      // console.log(container);
-      // console.log(item.distance);
     });
-
-    // console.log(distanceMap);
-
-    // mappedUserData.distance
 
     return container;
   });
-
-  // console.log(mergedDatas);
 
   let mappedCupsTotal =
     cupsTotal &&
@@ -130,5 +115,6 @@ export default function getUserEfficiency(props) {
 
   data.sort((a, b) => parseFloat(b.efficiency) - parseFloat(a.efficiency));
 
+  // console.log(data);
   return data;
 }

@@ -35,6 +35,10 @@ export default function LeaderBoard(props) {
           sorting: false,
           padding: "dense",
 
+          rowStyle: {
+            fontSize: 14,
+          },
+
           // rowStyle: (rowData) => ({
           //   backgroundColor:
           //     selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
