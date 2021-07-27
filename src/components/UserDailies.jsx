@@ -10,7 +10,7 @@ import DailyForm from "./DailyForm";
 
 const useStyles = makeStyles({
   container: {
-    width: "90%",
+    width: "100%",
   },
   root: {
     display: "flex",
@@ -26,26 +26,6 @@ const useStyles = makeStyles({
 
 export default function UserDailies(props) {
   const classes = useStyles();
-
-  // const fetchData = async () => {
-  //   const auth = {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   };
-
-  //   const getUserDaily = await fetch(
-  //     "http://127.0.0.1:3000/api/user_daily",
-  //     auth
-  //   );
-
-  //   const userDaily = await getUserDaily.json();
-  //   setUserDailies(userDaily);
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   const deleteData = async (id) => {
     await fetch(`http://127.0.0.1:3000/api/user_daily/${id}`, {
@@ -109,9 +89,10 @@ export default function UserDailies(props) {
         >
           Number of Reusable Cups
         </Typography>
-        <div />
-        <div />
+        {/* <div />
+        <div /> */}
       </Card>
+
       {props.userDailies &&
         props.userDailies.map((userDaily) => (
           <Card key={userDaily.id} className={classes.root} variant="outlined">

@@ -107,11 +107,19 @@ export default function LineChart(props) {
     getDepartmentEfficiency(getData);
   }, [props]);
 
-  // console.log(graphData);
+  console.log(graphData);
 
   // console.log(getDepartmentEfficiency(getData));
   return (
-    <div>
+    <div
+      style={{
+        width: "90%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Bar
         data={{
           labels: ["Accounting", "Finance", "IT"],
@@ -140,8 +148,8 @@ export default function LineChart(props) {
           ],
         }}
         options={{ indexAxis: "y" }}
-        height={400}
-        width={600}
+        height={"100%"}
+        width={"fitConent"}
       ></Bar>
     </div>
   );

@@ -8,8 +8,8 @@ main {
   background: radial-gradient(#1fe4f5, #3fbafe);
   margin: 20px;
   padding: 20px;
-  width: 500px;
-  min-height: 200px;
+  width: 45%;
+  min-height: 350px;
   display: grid;
   grid-template-rows: 20px 50px 1fr 50px;
   border-radius: 10px;
@@ -22,6 +22,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  /* align-items: ; */
 }
 
 .card-container.bottom {
@@ -29,14 +30,24 @@ main {
   min-height: 70px;
 }
 
+.card-container-line-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #section-one {
   background-color: red;
-  height: 80%;
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #section-two {
   background-color: green;
-  height: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
