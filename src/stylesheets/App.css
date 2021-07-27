@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Sign-Up-Log-In-Link {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  background-color: white;
+  height: 100%;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.LogIn-SignUp-Button {
+  color: white !important;
+  background-image: linear-gradient(120deg, #84d8fa 0%, #c444ff 100%);
+}
+.testing {
+  background: linear-gradient(
+    63.18deg,
+    #25edfc 0%,
+    rgba(200, 109, 255, 0.75) 53.86%,
+    #fc6bc2 100%
+  );
+}
+
+.tree {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  /* background-color: white; */
+  min-height: 300px;
+  /*  comment out the width for mobile */
+  min-width: 100px;
+  /* padding-top: 25px; */
+  border-radius: 7px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
-.App-link {
-  color: #61dafb;
+.tree-img {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-width: 95%;
+  max-height: 90%;
+  border-radius: 7px;
+  margin-bottom: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-wrap {
+  width: 80%;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.cell {
+  width: 25%;
+}
+
+.button-cell {
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
 }
