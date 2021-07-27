@@ -151,7 +151,7 @@ export default function DailyForm(props) {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        {props.buttonName}
+        {props.buttonDisplay}
       </Button>
       <Dialog
         open={open}

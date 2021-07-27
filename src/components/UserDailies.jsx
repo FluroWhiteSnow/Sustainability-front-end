@@ -7,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import JSONPretty from "react-json-pretty";
 import DailyForm from "./DailyForm";
+import Pagination from "@material-ui/lab/Pagination";
+import DoneIcon from "@material-ui/icons/Done";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles({
   container: {
@@ -58,6 +61,11 @@ export default function UserDailies(props) {
     }
   }
 
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
   return (
     <div className={classes.container}>
       <Card className={classes.root} variant="outlined">
@@ -89,8 +97,6 @@ export default function UserDailies(props) {
         >
           Number of Reusable Cups
         </Typography>
-        {/* <div />
-        <div /> */}
       </Card>
 
       {props.userDailies &&
@@ -112,17 +118,20 @@ export default function UserDailies(props) {
             </Typography>
             <DailyForm
               buttonName="Edit"
+              buttonDisplay={<DoneIcon />}
               userDaily={userDaily}
               fetchData={props.fetchData}
             />
             <Button
               onClick={() => handleClick("delete", userDaily.id)}
-              size="small"
+              variant="outlined"
+              color="primary"
             >
-              Delete
+              <CloseIcon />
             </Button>
           </Card>
         ))}
+      {/* <Pagination count={10} page={page} onChange={handleChange} /> */}
     </div>
   );
 }
