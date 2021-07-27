@@ -108,50 +108,57 @@ export default function UserDailies(props) {
       </Card>
 
       {props.userDailies &&
-        props.userDailies.map((userDaily) => (
-          <Card key={userDaily.id} className={classes.root} variant="outlined">
-            <div className="main-wrap">
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.created_at.substring(0, 10)}
-                </Typography>
+        props.userDailies
+          .sort((a, b) => b.id - a.id)
+          .slice(0, 3)
+          .map((userDaily) => (
+            <Card
+              key={userDaily.id}
+              className={classes.root}
+              variant="outlined"
+            >
+              <div className="main-wrap">
+                <div className="cell">
+                  <Typography variant="body2" component="p">
+                    {userDaily.created_at.substring(0, 10)}
+                  </Typography>
+                </div>
+                <div className="cell">
+                  <Typography variant="body2" component="p">
+                    {userDaily.walk && "Walk"}{" "}
+                    {userDaily.public_transport && "Public Transport"}{" "}
+                    {userDaily.drive && "Drive"}
+                  </Typography>
+                </div>
+                <div className="cell">
+                  <Typography variant="body2" component="p">
+                    {userDaily.coffee_cups}
+                  </Typography>
+                </div>
+                <div className="cell">
+                  <Typography variant="body2" component="p">
+                    {userDaily.reusable_cups}
+                  </Typography>
+                </div>
               </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.walk && "Walk"}{" "}
-                  {userDaily.public_transport && "Public Transport"}{" "}
-                  {userDaily.drive && "Drive"}
-                </Typography>
+              <div className="button-cell">
+                <DailyForm
+                  buttonName="Edit"
+                  buttonDisplay={<DoneIcon />}
+                  userDaily={userDaily}
+                  fetchData={props.fetchData}
+                />
+                <Button
+                  onClick={() => handleClick("delete", userDaily.id)}
+                  size="small"
+                  variant="outlined"
+                  color="primary"
+                >
+                  <CloseIcon />
+                </Button>
               </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.coffee_cups}
-                </Typography>
-              </div>
-              <div className="cell">
-                <Typography variant="body2" component="p">
-                  {userDaily.reusable_cups}
-                </Typography>
-              </div>
-            </div>
-            <div className="button-cell">
-              <DailyForm
-                buttonName="Edit"
-                buttonDisplay={<DoneIcon />}
-                userDaily={userDaily}
-                fetchData={props.fetchData}
-              />
-              <Button
-                onClick={() => handleClick("delete", userDaily.id)}
-                size="small"
-                variant="outlined"
-                color="primary"
-              >
-                <CloseIcon />
-              </Button>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))}
     </div>
   );
 }

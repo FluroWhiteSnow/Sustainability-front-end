@@ -6,10 +6,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "./contexts/AuthProvider";
 import "./../stylesheets/profile.css";
 
 export default function Profile(props) {
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +20,15 @@ export default function Profile(props) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const { authDispatch } = useAuth();
+
+  const handleSignOut = () => {
+    authDispatch({
+      type: "sign-out",
+    });
+    history.push("/");
   };
 
   async function handleSubmit(e) {
@@ -41,9 +53,7 @@ export default function Profile(props) {
       },
       body: JSON.stringify(newData),
     });
-    console.log("Hello");
     props.fetchData();
-    await console.log(props.user);
   }
 
   return (
@@ -119,7 +129,7 @@ export default function Profile(props) {
             </DialogContent>
             <br />
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
+              <Button onClick={handleSignOut} color="primary">
                 Sign Out
               </Button>
               <Button onClick={handleClose} color="primary">
