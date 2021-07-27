@@ -32,7 +32,7 @@ export default function UserDailies(props) {
 
   const deleteData = async (id) => {
     await fetch(
-      `http://sustainability-app.herokuapp.com/api/user_daily/${id}`,
+      `https://sustainability-app.herokuapp.com/api/user_daily/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -50,7 +50,7 @@ export default function UserDailies(props) {
       },
     };
 
-    fetch(`http://sustainability-app.herokuapp.com/api/user_daily/${id}`, {
+    fetch(`https://sustainability-app.herokuapp.com/api/user_daily/${id}`, {
       method: "PUT",
       auth,
     });

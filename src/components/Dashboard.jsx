@@ -45,38 +45,38 @@ export default function Dashboard() {
     };
 
     const getUser = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user_all",
+      "https://sustainability-app.herokuapp.com/api/user_all",
       auth
     );
     const getCurrentUser = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user",
+      "https://sustainability-app.herokuapp.com/api/user",
       auth
     );
 
     const getUserDaily = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user_daily",
+      "https://sustainability-app.herokuapp.com/api/user_daily",
       auth
     );
     //All User Total and Daily API calls
     const getCupsTotal = await fetch(
-      "http://sustainability-app.herokuapp.com/api/cups_total_all",
+      "https://sustainability-app.herokuapp.com/api/cups_total_all",
       auth
     );
     const getUserCo2Daily = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user_co2_daily_all",
+      "https://sustainability-app.herokuapp.com/api/user_co2_daily_all",
       auth
     );
     const getCo2Total = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user_co2_total_all",
+      "https://sustainability-app.herokuapp.com/api/user_co2_total_all",
       auth
     );
     //Current User Total and Daily API calls
     const getCurrentCo2Total = await fetch(
-      "http://sustainability-app.herokuapp.com/api/user_co2_total",
+      "https://sustainability-app.herokuapp.com/api/user_co2_total",
       auth
     );
     const getCurrentCupsTotal = await fetch(
-      "http://sustainability-app.herokuapp.com/api/cups_total",
+      "https://sustainability-app.herokuapp.com/api/cups_total",
       auth
     );
     const getCurrentTravelTotal = await fetch(

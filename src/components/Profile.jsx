@@ -46,7 +46,7 @@ export default function Profile(props) {
     };
 
     await fetch(
-      `http://sustainability-app.herokuapp.com/api/user/${props.user.id}`,
+      `https://sustainability-app.herokuapp.com/api/user/${props.user.id}`,
       {
         method: "PATCH",
         headers: {
