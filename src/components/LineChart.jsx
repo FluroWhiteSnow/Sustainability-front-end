@@ -115,6 +115,7 @@ export default function LineChart(props) {
       style={{
         width: "90%",
         maxWidth: 700,
+        maxHeight: 800,
         // height: "100%",
         display: "flex",
         justifyContent: "center",
@@ -128,11 +129,9 @@ export default function LineChart(props) {
             {
               label: "Department Efficiency Rating",
               data: [graphData.accounting, graphData.finance, graphData.iT],
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-              ],
+
+              backgroundColor: ["#e66465", "#9198e5", "#F0E68C"],
+
               borderColor: [
                 "rgba(255, 99, 132, 1)",
                 "rgba(54, 162, 235, 1)",

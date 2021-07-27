@@ -9,7 +9,6 @@ const useStyles = makeStyles(() => ({
     maxHeight: "fitContent",
     width: "48%",
     marginBottom: 15,
-    backgroundColor: "#F3F2C9",
     // marginTop: 30,
   },
   metricContainer: {
@@ -26,7 +25,10 @@ const useStyles = makeStyles(() => ({
 export default function MetricCard(props) {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper
+      className={classes.paper}
+      style={{ background: props.color, filter: props.filter }}
+    >
       <div className={classes.metricContainer}>
         <h1>{`${props.total} ${props.unit}`}</h1>
         <h6>{props.metricType}</h6>
