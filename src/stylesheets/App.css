@@ -33,13 +33,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: white;
-  max-height: 33%;
+  /* background-color: white; */
+  min-height: 300px;
   /*  comment out the width for mobile */
-  max-width: 33%;
+  min-width: 100px;
   /* padding-top: 25px; */
   border-radius: 7px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .tree-img {
@@ -47,5 +47,5 @@
   max-width: 95%;
   max-height: 90%;
   border-radius: 7px;
-  padding-bottom: 7px;
+  margin-bottom: 7px;
 }

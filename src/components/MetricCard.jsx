@@ -6,8 +6,9 @@ const useStyles = makeStyles(() => ({
   paper: {
     display: "flex",
     flexDirection: "row",
-    maxHeight: "120px",
-    width: "150px",
+    maxHeight: "fitContent",
+    width: "48%",
+    marginBottom: 15,
     backgroundColor: "#F3F2C9",
     // marginTop: 30,
   },

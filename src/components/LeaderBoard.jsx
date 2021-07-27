@@ -13,13 +13,14 @@ export default function LeaderBoard(props) {
     { title: "Efficiency", field: "efficiency" },
   ];
 
-  let data = getUserEfficiency(props).slice(0, 5);
+  let data = getUserEfficiency(props).slice(0, 6);
 
   console.log(data);
 
   return (
-    <div style={{ minWidth: 800 }}>
+    <div style={{ minWidth: "100%" }}>
       <MaterialTable
+        style={{ minWidth: "100%" }}
         columns={columns}
         data={data}
         title="User Efficiency Rating"
@@ -32,6 +33,8 @@ export default function LeaderBoard(props) {
           paging: false,
           pageSize: 5,
           sorting: false,
+          padding: "dense",
+
           // rowStyle: (rowData) => ({
           //   backgroundColor:
           //     selectedRow === rowData.tableData.id ? "#67aeae" : "#FFF",
