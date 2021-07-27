@@ -126,22 +126,6 @@ export default function Dashboard() {
   const classes = useStyles();
 
   return (
-    <div className={classes.paperContainer}>
-      {/* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */}
-      {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
-      {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
-      {/* <Profile icon={<FaceIcon />} />
-      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */}
-      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
-      {/* <LeaderBoard
-        users={user}
-        userCo2Dalies={userCo2Daily}
-        co2Totals={userCo2Total}
-        cupsTotal={cupsTotal}
-        style={{ width: 500 }}
-      ></LeaderBoard> */}
     <React.Fragment>
       <nav>
         <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
@@ -193,11 +177,40 @@ export default function Dashboard() {
       </main>
     </React.Fragment>
   );
-}
 
-// tree
-{
-  /* <div className="tree">
+  {
+    /* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */
+  }
+  {
+    /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+  }
+  {
+    /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
+  }
+  {
+    /* <Profile icon={<FaceIcon />} />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+  }
+  {
+    /* <JSONPretty data={userCo2Total}></JSONPretty> */
+  }
+  {
+    /* <JSONPretty data={userCo2Total}></JSONPretty> */
+  }
+  {
+    /* <LeaderBoard
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500 }}
+      ></LeaderBoard> */
+  }
+
+  // tree
+  {
+    /* <div className="tree">
         <div className={classes.moveIcon}>
           <Tooltip
             title={`The more Co2 you save,\n The larger your tree grows!`}
@@ -219,51 +232,38 @@ export default function Dashboard() {
         co2Totals={userCo2Total}
         cupsTotal={cupsTotal}
         style={{ width: 500, height: 500 }}
-      ></LineChart> */}
+      ></LineChart> */
+  }
 
-      {/* <DashboardContainer />
+  {
+    /* <DashboardContainer />
       <UserDailies />
       <DashboardContainer />
       <DashboardContainer />
-      <DashboardContainer /> */}
+      <DashboardContainer /> */
+  }
 
-      {/* <JSONPretty data={cupsTotal}></JSONPretty>
-            <JSONPretty data={cupsTotal}></JSONPretty>
-      <JSONPretty data={travelTotal}></JSONPretty>
-      
-      <JSONPretty data={userDalies}></JSONPretty>
-      <JSONPretty data={userCo2Daily}></JSONPretty>
+  {
+    /* <LeaderBoard
+       users={user}
+      userCo2Dalies={userCo2Daily}
+      co2Totals={userCo2Total}
+       cupsTotal={cupsTotal}
+       style={{ width: 500 }}
+     ></LeaderBoard>  */
+  }
 
-      <JSONPretty data={user}></JSONPretty> */}
-    </div>
-  );
-      ></LineChart> */
-}
-
-// leaderboard
-{
-  /* <LeaderBoard
-        users={user}
-        userCo2Dalies={userCo2Daily}
-        co2Totals={userCo2Total}
-        cupsTotal={cupsTotal}
-        style={{ width: 500 }}
-      ></LeaderBoard> */
-}
-
-{
-  /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
-}
-{
+  // {
+  //   /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+  // }
+  // {
   /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
-}
-{
-  /* <Profile icon={<FaceIcon />} />
-      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
-      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
-}
+  // }
+  // {
+  //   /* <Profile icon={<FaceIcon />} />
+  //       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+  //       <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+  // }
 
-// metric card
-
-{
+  // metric card
 }
