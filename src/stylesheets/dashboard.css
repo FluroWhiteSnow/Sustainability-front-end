@@ -26,7 +26,7 @@ main {
 }
 
 .card-container.bottom {
-  width: 94%;
+  width: 93%;
   min-height: 70px;
 }
 
@@ -46,7 +46,7 @@ main {
 
 #section-two {
   background-color: green;
-  height: 100%;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
