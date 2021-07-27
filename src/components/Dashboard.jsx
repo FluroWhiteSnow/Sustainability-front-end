@@ -1,11 +1,9 @@
-import { doesNotMatch } from "assert";
 import React, { useEffect, useState } from "react";
-import JSONPretty from "react-json-pretty";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
 import UserDailies from "./UserDailies";
 import DailyForm from "./DailyForm";
-import { Grid, InputAdornment } from "@material-ui/core";
+
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import WbCloudyIcon from "@material-ui/icons/WbCloudy";

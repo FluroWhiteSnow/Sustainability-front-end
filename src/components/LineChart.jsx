@@ -10,15 +10,15 @@ export default function LineChart(props) {
 
   function getDepartmentEfficiency(data) {
     let accountingCount = data.reduce(function (n, item) {
-      return n + (item.department == "Accounting");
+      return n + (item.department === "Accounting");
     }, 0);
 
     let financeCount = data.reduce(function (n, item) {
-      return n + (item.department == "Finance");
+      return n + (item.department === "Finance");
     }, 0);
 
     let itCount = data.reduce(function (n, item) {
-      return n + (item.department == "IT");
+      return n + (item.department === "IT");
     }, 0);
 
     let mapData = data.map((item) => {
