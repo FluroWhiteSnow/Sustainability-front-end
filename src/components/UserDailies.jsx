@@ -10,6 +10,7 @@ import DailyForm from "./DailyForm";
 import Pagination from "@material-ui/lab/Pagination";
 import DoneIcon from "@material-ui/icons/Done";
 import CloseIcon from "@material-ui/icons/Close";
+import "../stylesheets/App.css";
 
 const useStyles = makeStyles({
   container: {
@@ -17,13 +18,16 @@ const useStyles = makeStyles({
   },
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    flexDirection: "row",
+    justifyContent: "flex-start",
     alignItems: "center",
-    minWidth: "80%",
+    minWidth: "100%",
     minHeight: "5%",
+    paddingLeft: 20,
   },
   title: {
     fontSize: 14,
+    width: "fitContent",
   },
 });
 
@@ -102,6 +106,7 @@ export default function UserDailies(props) {
       {props.userDailies &&
         props.userDailies.map((userDaily) => (
           <Card key={userDaily.id} className={classes.root} variant="outlined">
+
             <Typography variant="body2" component="p">
               {userDaily.created_at.substring(0, 10)}
             </Typography>
@@ -129,6 +134,7 @@ export default function UserDailies(props) {
             >
               <CloseIcon />
             </Button>
+
           </Card>
         ))}
       {/* <Pagination count={10} page={page} onChange={handleChange} /> */}
