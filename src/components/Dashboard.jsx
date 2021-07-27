@@ -80,7 +80,7 @@ export default function Dashboard() {
       auth
     );
     const getCurrentTravelTotal = await fetch(
-      "http://sustainability-app.herokuapp.com/api/travel_total",
+      "https://sustainability-app.herokuapp.com/api/travel_total",
       auth
     );
     //All Users
