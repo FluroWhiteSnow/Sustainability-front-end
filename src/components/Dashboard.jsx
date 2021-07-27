@@ -1,6 +1,7 @@
 import { doesNotMatch } from "assert";
 import React, { useEffect, useState } from "react";
 import JSONPretty from "react-json-pretty";
+import DashboardContainer from "./DashboardContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import MetricCard from "./MetricCard";
 import UserDailies from "./UserDailies";
@@ -125,25 +126,128 @@ export default function Dashboard() {
   const classes = useStyles();
 
   return (
+
+    <div className={classes.paperContainer}>
+      {/* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */}
+      {/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */}
+      {/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */}
+      {/* <Profile icon={<FaceIcon />} />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */}
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      {/* <JSONPretty data={userCo2Total}></JSONPretty> */}
+      {/* <LeaderBoard
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500 }}
+      ></LeaderBoard> */}
+      <React.Fragment>
+        <nav>
+          <Profile
+            icon={<FaceIcon />}
+            user={currentUser}
+            fetchData={fetchData}
+          />
+        </nav>
+        <main>
+          <section id="section-one">
+            <article class="card-container">
+              <LeaderBoard
+                users={user}
+                userCo2Dalies={userCo2Daily}
+                co2Totals={userCo2Total}
+                cupsTotal={cupsTotal}
+              ></LeaderBoard>
+            </article>
+            <article class="card-container metric-card">
+              <MetricCard
+                unit="cups"
+                total={currentCupsTotal.reusable_cups_total}
+                metricType="Reusable Impact"
+                icon={
+                  <LocalCafeIcon style={{ width: "50px", height: "50px" }} />
+                }
+              />
+              <MetricCard
+                unit="kms"
+                total={
+                  currentTravelTotal.walk_total_km +
+                  currentTravelTotal.pt_total_km
+                }
+                metricType="Commute Impact"
+                icon={
+                  <DirectionsBikeIcon
+                    style={{ width: "50px", height: "50px" }}
+                  />
+                }
+              />
+              <MetricCard
+                unit="g"
+                total={
+                  currentUserCo2Total.walk_co2_total +
+                  currentUserCo2Total.pt_co2_total +
+                  currentUserCo2Total.reusable_cups_co2_total
+                }
+                metricType="CO2 Diverted"
+                icon={
+                  <WbCloudyIcon style={{ width: "50px", height: "50px" }} />
+                }
+              />
+              <MetricCard
+                unit="days"
+                total={userDailies.length}
+                metricType="Total CO2 Offset Days"
+                icon={
+                  <WbCloudyIcon style={{ width: "50px", height: "50px" }} />
+                }
+              />
+            </article>
+            <article class="card-container card-container-line-chart">
+              <LineChart
+                users={user}
+                userCo2Dalies={userCo2Daily}
+                co2Totals={userCo2Total}
+                cupsTotal={cupsTotal}
+                style={{ width: "100%", height: "100%" }}
+              ></LineChart>
+            </article>
+            <article class="card-container ">
+              <div className="tree">
+                <div className={classes.moveIcon}>
+                  <Tooltip
+                    title={`The more Co2 you save,\n The larger your tree grows!`}
+                  >
+                    <IconButton
+                      aria-label="delete"
+                      className={classes.alignRight}
+                    >
+                      <HelpOutlineIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+
+                <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
+              </div>
+            </article>
+          </section>
+          <section id="section-two">
+            <article class="card-container bottom">
+              <UserDailies userDailies={userDailies} fetchData={fetchData} />
+            </article>
+          </section>
+        </main>
+      </React.Fragment>
+      {/* <div className="tree">
+
     <React.Fragment>
       <nav>
         <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} />
-        <DailyForm
-          buttonName="newDaily"
-          buttonDisplay="New Contribution"
-          fetchData={fetchData}
-        />
       </nav>
       <main>
         <section id="section-one">
-          <article class="card-container">
-            <LeaderBoard
-              users={user}
-              userCo2Dalies={userCo2Daily}
-              co2Totals={userCo2Total}
-              cupsTotal={cupsTotal}
-            ></LeaderBoard>
-          </article>
+          <article class="card-container"></article>
           <article class="card-container metric-card">
             <MetricCard
               unit="cups"
@@ -179,40 +283,141 @@ export default function Dashboard() {
               icon={<WbCloudyIcon style={{ width: "50px", height: "50px" }} />}
             />
           </article>
-          <article class="card-container card-container-line-chart">
-            <LineChart
-              users={user}
-              userCo2Dalies={userCo2Daily}
-              co2Totals={userCo2Total}
-              cupsTotal={cupsTotal}
-              style={{ width: "100%", height: "100%" }}
-            ></LineChart>
-          </article>
-          <article class="card-container ">
-            <div className="tree">
-              <div className={classes.moveIcon}>
-                <Tooltip
-                  title={`The more Co2 you save,\n The larger your tree grows!`}
-                >
-                  <IconButton
-                    aria-label="delete"
-                    className={classes.alignRight}
-                  >
-                    <HelpOutlineIcon />
-                  </IconButton>
-                </Tooltip>
-              </div>
-
-              <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
-            </div>
-          </article>
+          <article class="card-container"></article>
+          <article class="card-container"></article>
         </section>
         <section id="section-two">
-          <article class="card-container bottom">
-            <UserDailies userDailies={userDailies} fetchData={fetchData} />
-          </article>
+          <article class="card-container bottom"></article>
         </section>
       </main>
     </React.Fragment>
   );
+
+  {
+    /* <Profile icon={<FaceIcon />} user={currentUser} fetchData={fetchData} /> */
+  }
+  {
+    /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+  }
+  {
+    /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
+  }
+  {
+    /* <Profile icon={<FaceIcon />} />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+  }
+  {
+    /* <JSONPretty data={userCo2Total}></JSONPretty> */
+  }
+  {
+    /* <JSONPretty data={userCo2Total}></JSONPretty> */
+  }
+  {
+    /* <LeaderBoard
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500 }}
+      ></LeaderBoard> */
+  }
+
+  // tree
+  {
+    /* <div className="tree">
+        <div className={classes.moveIcon}>
+          <Tooltip
+            title={`The more Co2 you save,\n The larger your tree grows!`}
+          >
+            <IconButton aria-label="delete" className={classes.alignRight}>
+              <HelpOutlineIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+
+        <TreeCard co2Totals={currentUserCo2Total}></TreeCard>
+      </div>
+
+      {/* <LineChart
+// line chart
+      <LineChart
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500, height: 500 }}
+
+      ></LineChart> */}
+      {/* <DashboardContainer />
+      <UserDailies />
+      <DashboardContainer />
+      <DashboardContainer />
+      <DashboardContainer /> */}
+      {/* <JSONPretty data={cupsTotal}></JSONPretty>
+            <JSONPretty data={cupsTotal}></JSONPretty>
+      <JSONPretty data={travelTotal}></JSONPretty>
+      
+      <JSONPretty data={userDalies}></JSONPretty>
+      <JSONPretty data={userCo2Daily}></JSONPretty>
+
+      <JSONPretty data={user}></JSONPretty> */}
+    </div>
+  );
 }
+
+// leaderboard
+
+/* <LeaderBoard
+        users={user}
+        userCo2Dalies={userCo2Daily}
+        co2Totals={userCo2Total}
+        cupsTotal={cupsTotal}
+        style={{ width: 500 }}
+      ></LeaderBoard> */
+
+/* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+
+/* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
+
+/* <Profile icon={<FaceIcon />} />
+      <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+      <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+
+// metric card
+
+  }
+
+  {
+    /* <DashboardContainer />
+      <UserDailies />
+      <DashboardContainer />
+      <DashboardContainer />
+      <DashboardContainer /> */
+  }
+
+  {
+    /* <LeaderBoard
+       users={user}
+      userCo2Dalies={userCo2Daily}
+      co2Totals={userCo2Total}
+       cupsTotal={cupsTotal}
+       style={{ width: 500 }}
+     ></LeaderBoard>  */
+  }
+
+  // {
+  //   /* <DailyForm buttonName="NewDaily" fetchData={fetchData} /> */
+  // }
+  // {
+  /* <UserDailies userDailies={userDailies} fetchData={fetchData} />      */
+  // }
+  // {
+  //   /* <Profile icon={<FaceIcon />} />
+  //       <DailyForm buttonName="NewDaily" fetchData={fetchData} />
+  //       <UserDailies userDailies={userDailies} fetchData={fetchData} /> */
+  // }
+
+  // metric card
+}
+
