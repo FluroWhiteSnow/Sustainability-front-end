@@ -6,10 +6,10 @@ const useStyles = makeStyles(() => ({
   paper: {
     display: "flex",
     flexDirection: "row",
-    maxHeight: 200,
-    width: 300,
+    maxHeight: "120px",
+    width: "150px",
     backgroundColor: "#F3F2C9",
-    marginTop: 30,
+    // marginTop: 30,
   },
   metricContainer: {
     display: "flex",
