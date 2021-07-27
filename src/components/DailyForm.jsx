@@ -181,7 +181,6 @@ export default function DailyForm(props) {
               </FormLabel>
               <br />
               <RadioGroup
-                defaultValue="drive"
                 aria-label="transport_type"
                 name="customized-radios"
                 value={transportType()}

@@ -9,7 +9,6 @@ const useStyles = makeStyles(() => ({
     maxHeight: "fitContent",
     width: "48%",
     marginBottom: 15,
-    // marginTop: 30,
   },
   metricContainer: {
     display: "flex",

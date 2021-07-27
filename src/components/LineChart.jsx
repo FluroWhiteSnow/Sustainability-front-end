@@ -2,10 +2,6 @@ import React, { ReactDOM } from "react";
 import getUserEfficiency from "./GetUserEfficiency";
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart } from "chart.js";
-
-// const domContainer = document.querySelector("#app");
-// ReactDOM.render(React.createElement(ApexChart), domContainer);
 
 export default function LineChart(props) {
   let getData = getUserEfficiency(props);
@@ -24,8 +20,6 @@ export default function LineChart(props) {
     let itCount = data.reduce(function (n, item) {
       return n + (item.department == "IT");
     }, 0);
-
-    // console.log(accountingCount, financeCount, itCount);
 
     let mapData = data.map((item) => {
       let container = {};
@@ -46,13 +40,9 @@ export default function LineChart(props) {
         container[count] = itCount;
       } else if (container.department === "Finance") {
         container[count] = financeCount;
-        // let sum = item.reduce((a, { efficiency }) => a + efficiency, 0);
-
         return container;
       }
-
       return container;
-      // console.log(container);
     });
 
     let departmentEfficiencyCalc = {
@@ -99,7 +89,6 @@ export default function LineChart(props) {
     };
 
     setGraphData(efficiency);
-    // setGraphData(graphObject);
     return efficiency;
   }
 
@@ -107,16 +96,12 @@ export default function LineChart(props) {
     getDepartmentEfficiency(getData);
   }, [props]);
 
-  console.log(graphData);
-
-  // console.log(getDepartmentEfficiency(getData));
   return (
     <div
       style={{
         width: "90%",
         maxWidth: 700,
         maxHeight: 800,
-        // height: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

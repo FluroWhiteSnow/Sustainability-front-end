@@ -54,8 +54,6 @@ export default function Login({ history }) {
     );
     const data = await response.json();
     if (data.jwt) {
-      await console.log(data);
-
       authDispatch({
         type: "login",
         token: data.jwt,

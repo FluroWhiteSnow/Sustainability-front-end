@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import JSONPretty from "react-json-pretty";
 import DailyForm from "./DailyForm";
 import "../stylesheets/App.css";
 import DoneIcon from "@material-ui/icons/Done";
@@ -34,12 +31,15 @@ export default function UserDailies(props) {
   const classes = useStyles();
 
   const deleteData = async (id) => {
-    await fetch(`http://sustainability-app.herokuapp.com/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    await fetch(
+      `http://sustainability-app.herokuapp.com/api/user_daily/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     props.fetchData();
   };
 
@@ -50,7 +50,7 @@ export default function UserDailies(props) {
       },
     };
 
-    fetch(`http://sustainability-app.herokuapp.com/${id}`, {
+    fetch(`http://sustainability-app.herokuapp.com/api/user_daily/${id}`, {
       method: "PUT",
       auth,
     });
@@ -110,7 +110,7 @@ export default function UserDailies(props) {
       {props.userDailies &&
         props.userDailies
           .sort((a, b) => b.id - a.id)
-          .slice(0, 30)
+          .slice(0, 3)
           .map((userDaily) => (
             <Card
               key={userDaily.id}

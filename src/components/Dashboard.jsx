@@ -31,7 +31,6 @@ export default function Dashboard() {
   // All User Totals and Dailies
   const [userDailies, setUserDailies] = useState([]);
   const [cupsTotal, setCupstotal] = useState([]);
-  const [travelTotal, setTraveltotal] = useState([]);
   const [userCo2Daily, setUserCo2Daily] = useState([]);
   const [userCo2Total, setUserCo2Total] = useState([]);
 
@@ -39,7 +38,6 @@ export default function Dashboard() {
   const [currentUserCo2Total, setCurrentUserCo2Total] = useState({});
   const [currentCupsTotal, setCurrentCupsTotal] = useState({});
   const [currentTravelTotal, setCurrentTraveltotal] = useState({});
-  const [currentUserCo2Daily, setCurrentUserCo2Daily] = useState({});
 
   const fetchData = async () => {
     const auth = {
@@ -53,7 +51,7 @@ export default function Dashboard() {
       auth
     );
     const getCurrentUser = await fetch(
-      "http://sustainability-app.herokuapp.com//api/user",
+      "http://sustainability-app.herokuapp.com/api/user",
       auth
     );
 
@@ -110,7 +108,6 @@ export default function Dashboard() {
     setCurrentUserCo2Total(currentCo2Total);
     setCurrentCupsTotal(currentCupsTotal);
     setCurrentTraveltotal(currentTravelTotal);
-    await console.log(userCo2Daily, userCo2Total, user, cupsTotal);
   };
 
   useEffect(() => {
@@ -187,7 +184,6 @@ export default function Dashboard() {
                       style={{ width: "50px", height: "50px" }}
                     />
                   }
-                  // background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
                 />
                 <MetricCard
                   unit="g"
