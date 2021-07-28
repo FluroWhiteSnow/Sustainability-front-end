@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 export default function LineChart(props) {
-  let getData = getUserEfficiency(props);
+  const getData = getUserEfficiency(props);
 
   const [graphData, setGraphData] = useState([]);
 
@@ -21,13 +21,13 @@ export default function LineChart(props) {
       return n + (item.department == "IT");
     }, 0);
 
-    let mapData = data.map((item) => {
-      let container = {};
+    const mapData = data.map((item) => {
+      const container = {};
 
-      let department = "department";
-      let efficiency = "efficiency";
-      let count = "count";
-      let efficiencyTotal = "efficiencyTotal";
+      const department = "department";
+      const efficiency = "efficiency";
+      const count = "count";
+      const efficiencyTotal = "efficiencyTotal";
 
       container[department] = item.department;
       container[efficiency] = item.efficiency;
@@ -46,7 +46,7 @@ export default function LineChart(props) {
       return container;
     });
 
-    let departmentEfficiencyCalc = {
+    const departmentEfficiencyCalc = {
       itEfficiency: 0,
       itCount: 0,
       accoutningEfficiency: 0,
