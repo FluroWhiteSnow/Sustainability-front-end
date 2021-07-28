@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 export default function LineChart(props) {
-  let getData = getUserEfficiency(props);
+  const getData = getUserEfficiency(props);
 
   const [graphData, setGraphData] = useState([]);
 
@@ -21,13 +21,13 @@ export default function LineChart(props) {
       return n + (item.department === "IT");
     }, 0);
 
-    let mapData = data.map((item) => {
-      let container = {};
+    const mapData = data.map((item) => {
+      const container = {};
 
-      let department = "department";
-      let efficiency = "efficiency";
-      let count = "count";
-      let efficiencyTotal = "efficiencyTotal";
+      const department = "department";
+      const efficiency = "efficiency";
+      const count = "count";
+      const efficiencyTotal = "efficiencyTotal";
 
       container[department] = item.department;
       container[efficiency] = item.efficiency;
@@ -42,10 +42,11 @@ export default function LineChart(props) {
         container[count] = financeCount;
         return container;
       }
+
       return container;
     });
 
-    let departmentEfficiencyCalc = {
+    const departmentEfficiencyCalc = {
       itEfficiency: 0,
       itCount: 0,
       accoutningEfficiency: 0,
@@ -55,17 +56,26 @@ export default function LineChart(props) {
     };
 
     for (let i = 0; i < mapData.length; i++) {
-      if (mapData[i].department === "Finance") {
+      if (
+        mapData[i].department === "Finance" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.financeEfficiency += parseInt(
           mapData[i].efficiency
         );
         departmentEfficiencyCalc.financeCount += 1;
-      } else if (mapData[i].department === "IT") {
+      } else if (
+        mapData[i].department === "IT" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.itEfficiency += parseInt(
           mapData[i].efficiency
         );
         departmentEfficiencyCalc.itCount += 1;
-      } else if (mapData[i].department === "Accounting") {
+      } else if (
+        mapData[i].department === "Accounting" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.accoutningEfficiency += parseInt(
           mapData[i].efficiency
         );
@@ -75,17 +85,14 @@ export default function LineChart(props) {
 
     let efficiency = {
       iT:
-        (departmentEfficiencyCalc.itEfficiency /
-          departmentEfficiencyCalc.itCount) *
-        100,
+        departmentEfficiencyCalc.itEfficiency /
+        departmentEfficiencyCalc.itCount,
       accounting:
-        (departmentEfficiencyCalc.accoutningEfficiency /
-          departmentEfficiencyCalc.accountingCount) *
-        100,
+        departmentEfficiencyCalc.accoutningEfficiency /
+        departmentEfficiencyCalc.accountingCount,
       finance:
-        (departmentEfficiencyCalc.financeEfficiency /
-          departmentEfficiencyCalc.financeCount) *
-        100,
+        departmentEfficiencyCalc.financeEfficiency /
+        departmentEfficiencyCalc.financeCount,
     };
 
     setGraphData(efficiency);

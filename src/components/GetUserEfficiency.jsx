@@ -1,17 +1,17 @@
 export default function getUserEfficiency(props) {
-  let userData = props.users;
-  let cO2DailyData = props.userCo2Dalies;
-  let userCo2Data = props.co2Totals;
-  let cupsTotal = props.cupsTotal;
+  const userData = props.users;
+  const cO2DailyData = props.userCo2Dalies;
+  const userCo2Data = props.co2Totals;
+  const cupsTotal = props.cupsTotal;
 
-  let mappedUserData = userData.map((item) => {
+  const mappedUserData = userData.map((item) => {
     const container = {};
 
-    let name = "name";
-    let id = "id";
-    let department = "department";
-    let efficiency = "efficiency";
-    let distance = "distance";
+    const name = "name";
+    const id = "id";
+    const department = "department";
+    const efficiency = "efficiency";
+    const distance = "distance";
     container[id] = item.id;
     container[name] = `${item.first_name} ${item.last_name}`;
     container[department] = item.department_code;
@@ -21,17 +21,16 @@ export default function getUserEfficiency(props) {
     return container;
   });
 
-  let co2DailyIds = cO2DailyData.map((item) => {
+  const co2DailyIds = cO2DailyData.map((item) => {
     let array = item.user_co2_total_id;
     return array;
   });
 
-  let mappedcO2total = userCo2Data.map((item) => {
+  const mappedcO2total = userCo2Data.map((item) => {
     const container = { ...item };
-    let id = "id";
-    let driveWalk = "driveDividedWalk";
-    let co2DailyCount = "co2DailyCount";
-
+    const id = "id";
+    const driveWalk = "driveDividedWalk";
+    const co2DailyCount = "co2DailyCount";
     container[id] = item.id;
     container[driveWalk] = item.pt_co2_total + item.walk_co2_total;
     container[co2DailyCount] = 0;
@@ -39,7 +38,7 @@ export default function getUserEfficiency(props) {
     return container;
   });
 
-  let mergedDatas = mappedcO2total.map((item) => {
+  const mergedDatas = mappedcO2total.map((item) => {
     const container = { ...item };
 
     for (let i = 0; i < co2DailyIds.length; i++) {
@@ -48,41 +47,39 @@ export default function getUserEfficiency(props) {
       }
     }
 
-    let distanceMap = mappedUserData.map((item) => {
+    mappedUserData.map((item) => {
       let timesCountWalk =
         container.driveDividedWalk /
         (150 * (container.co2DailyCount * item.distance));
-      let name = "timesCountWalk";
+      const name = "timesCountWalk";
 
       container[name] = timesCountWalk;
     });
-
     return container;
   });
 
-  let mappedCupsTotal =
+  const mappedCupsTotal =
     cupsTotal &&
     cupsTotal.map((item) => {
       const container = {};
-      let id = "id";
-      let reuasbleDividedCoffee = "reuasbleDividedCoffee";
-
+      const id = "id";
+      const reuasbleDividedCoffee = "reuasbleDividedCoffee";
       let cupsEfficiancy = item.reusable_cups_total / item.coffee_cups_total;
 
       if (isNaN(cupsEfficiancy) || cupsEfficiancy === Infinity) {
-        cupsEfficiancy = 0;
+        cupsEfficiancy = 1;
       }
       container[id] = item.id;
       container[reuasbleDividedCoffee] = cupsEfficiancy;
       return container;
     });
 
-  let efficiency = mappedCupsTotal.map((item) => {
-    let container = {};
+  const efficiency = mappedCupsTotal.map((item) => {
+    const container = {};
 
-    let effiency2 = mergedDatas.map((item2) => {
-      let id = "id";
-      let value = "value";
+    mergedDatas.map((item2) => {
+      const id = "id";
+      const value = "value";
 
       if (item.id === item2.id) {
         let effiencyValue = item.reuasbleDividedCoffee + item2.timesCountWalk;
@@ -93,12 +90,12 @@ export default function getUserEfficiency(props) {
     return container;
   });
 
-  let data = mappedUserData.map((item) => {
-    let container = { ...item };
+  const data = mappedUserData.map((item) => {
+    const container = { ...item };
 
-    let efficiantMap = efficiency.map((item2) => {
+    efficiency.map((item2) => {
       if (item.id === item2.id) {
-        let sum = container.efficiency + item2.value;
+        let sum = container.efficiency + (item2.value / 2) * 100;
         let n = sum.toFixed(2);
         container.efficiency = n;
       }
