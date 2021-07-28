@@ -98,7 +98,7 @@ export default function SignUp({ history }) {
 
   async function postSignUp() {
     const response = await fetch(
-      "http://sustainability-app.herokuapp.com/api/auth/sign_up",
+      "https://sustainability-app.herokuapp.com/api/auth/sign_up",
       {
         method: "POST",
         headers: {

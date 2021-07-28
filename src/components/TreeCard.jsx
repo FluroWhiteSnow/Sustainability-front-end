@@ -15,16 +15,16 @@ export default function TreeCard(props) {
     props.co2Totals.walk_co2_total;
 
   if (!(data > 50) && data < 51) {
-    return <img src={bg1} className="tree-img" />;
+    return <img src={bg1} className="tree-img" alt="seed" />;
   } else if (!(data > 100) && data < 101) {
-    return <img src={bg2} className="tree-img" />;
+    return <img src={bg2} className="tree-img" alt="xsmalltree" />;
   } else if (!(data > 150) && data < 151) {
-    return <img src={bg3} className="tree-img" />;
+    return <img src={bg3} className="tree-img" alt="smalltree" />;
   } else if (!(data > 200) && data < 201) {
-    return <img src={bg4} className="tree-img" />;
+    return <img src={bg4} className="tree-img" alt="mediumtree" />;
   } else if (!(data > 250) && data < 251) {
-    return <img src={bg5} className="tree-img" />;
+    return <img src={bg5} className="tree-img" alt="largetree" />;
   } else {
-    return <img src={bg6} className="tree-img" />;
+    return <img src={bg6} className="tree-img" alt="xlargetree" />;
   }
 }

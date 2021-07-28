@@ -43,7 +43,7 @@ export default function Login({ history }) {
 
   const sendLoginRequest = async () => {
     const response = await fetch(
-      "http://sustainability-app.herokuapp.com/api/auth/sign_in",
+      "https://sustainability-app.herokuapp.com/api/auth/sign_in",
       {
         method: "POST",
         headers: {

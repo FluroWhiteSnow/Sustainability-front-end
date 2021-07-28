@@ -125,7 +125,7 @@ export default function DailyForm(props) {
     };
     if (props.buttonName === "Edit") {
       await fetch(
-        `http://sustainability-app.herokuapp.com/api/user_daily/${props.userDaily.id}`,
+        `https://sustainability-app.herokuapp.com/api/user_daily/${props.userDaily.id}`,
         {
           method: "PATCH",
           headers: {
@@ -136,7 +136,7 @@ export default function DailyForm(props) {
         }
       );
     } else {
-      await fetch("http://sustainability-app.herokuapp.com/api/user_daily/", {
+      await fetch("https://sustainability-app.herokuapp.com/api/user_daily/", {
         method: "Post",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
