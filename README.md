@@ -2,7 +2,7 @@
 
 ## Jackie Sun and Ananda Rodziewicz
 
-Deployed App: https://xxx/
+Deployed App: https://workplacesustainability.netlify.app/
 
 Client Repo: https://github.com/FluroWhiteSnow/Sustainability-front-end
 
