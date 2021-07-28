@@ -42,6 +42,7 @@ export default function LineChart(props) {
         container[count] = financeCount;
         return container;
       }
+
       return container;
     });
 
@@ -55,17 +56,26 @@ export default function LineChart(props) {
     };
 
     for (let i = 0; i < mapData.length; i++) {
-      if (mapData[i].department === "Finance") {
+      if (
+        mapData[i].department === "Finance" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.financeEfficiency += parseInt(
           mapData[i].efficiency
         );
         departmentEfficiencyCalc.financeCount += 1;
-      } else if (mapData[i].department === "IT") {
+      } else if (
+        mapData[i].department === "IT" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.itEfficiency += parseInt(
           mapData[i].efficiency
         );
         departmentEfficiencyCalc.itCount += 1;
-      } else if (mapData[i].department === "Accounting") {
+      } else if (
+        mapData[i].department === "Accounting" &&
+        !isNaN(mapData[i].efficiency)
+      ) {
         departmentEfficiencyCalc.accoutningEfficiency += parseInt(
           mapData[i].efficiency
         );
@@ -75,17 +85,14 @@ export default function LineChart(props) {
 
     let efficiency = {
       iT:
-        (departmentEfficiencyCalc.itEfficiency /
-          departmentEfficiencyCalc.itCount) *
-        100,
+        departmentEfficiencyCalc.itEfficiency /
+        departmentEfficiencyCalc.itCount,
       accounting:
-        (departmentEfficiencyCalc.accoutningEfficiency /
-          departmentEfficiencyCalc.accountingCount) *
-        100,
+        departmentEfficiencyCalc.accoutningEfficiency /
+        departmentEfficiencyCalc.accountingCount,
       finance:
-        (departmentEfficiencyCalc.financeEfficiency /
-          departmentEfficiencyCalc.financeCount) *
-        100,
+        departmentEfficiencyCalc.financeEfficiency /
+        departmentEfficiencyCalc.financeCount,
     };
 
     setGraphData(efficiency);
