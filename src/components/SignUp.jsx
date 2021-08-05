@@ -282,7 +282,7 @@ export default function SignUp({ history }) {
               </Button>
               <div style={{ height: 20 }} />
               <ThemeProvider theme={theme}>
-                <Typography variant="SignUp" align="right">
+                <Typography variant="SignUp" align="center">
                   Already have an account?{" "}
                   <Link
                     variant="LogIn"
