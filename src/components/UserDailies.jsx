@@ -70,14 +70,18 @@ export default function UserDailies(props) {
       <Card className={classes.root} variant="outlined">
         <div className="main-wrap">
           <div className="cell cell-one">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Date
-            </Typography>
+            {/* <img className="daily-icon" src="./assets/book.svg" alt="book" /> */}
+            <div className="daily-headings">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                component="p"
+              >
+                Date
+              </Typography>
+            </div>
           </div>
+
           <div className="cell">
             <Typography
               className={classes.title}

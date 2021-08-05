@@ -57,3 +57,17 @@
   width: 20%;
   justify-content: space-evenly;
 }
+
+/* .daily-icon {
+  display: none;
+} */
+
+/* @media screen and (max-width: 600px) {
+  .daily-headings {
+    display: none;
+  }
+
+  .daily-icon {
+    height: 10px;
+  }
+} */
