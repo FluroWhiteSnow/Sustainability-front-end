@@ -1,22 +1,8 @@
 main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  /* background: linear-gradient(
-    63.18deg,
-    #25edfc 0%,
-    rgba(200, 109, 255, 0.75) 53.86%,
-    #fc6bc2 100%
-  ); */
-}
-
-.background {
-  background: linear-gradient(
-    63.18deg,
-    #25edfc 0%,
-    rgba(200, 109, 255, 0.75) 53.86%,
-    #fc6bc2 100%
-  );
+  height: fit-content;
+  margin-bottom: 30px;
 }
 
 .top-section-conatiner {
