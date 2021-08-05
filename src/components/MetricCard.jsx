@@ -1,13 +1,21 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     display: "flex",
     flexDirection: "row",
     maxHeight: "fitContent",
-    width: "48%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      padding: 10,
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "48%",
+    },
+    // width: "48%",
     marginBottom: 15,
   },
   metricContainer: {

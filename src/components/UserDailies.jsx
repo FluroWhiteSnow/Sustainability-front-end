@@ -11,6 +11,7 @@ import CloseIcon from "@material-ui/icons/Close";
 const useStyles = makeStyles({
   container: {
     width: "100%",
+    height: "fit-content",
   },
   root: {
     display: "flex",
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
     alignItems: "center",
     minWidth: "100%",
-    minHeight: "5%",
+    minHeight: "fit-content",
     paddingLeft: 20,
   },
   title: {
@@ -69,14 +70,18 @@ export default function UserDailies(props) {
       <Card className={classes.root} variant="outlined">
         <div className="main-wrap">
           <div className="cell cell-one">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Date
-            </Typography>
+            {/* <img className="daily-icon" src="./assets/book.svg" alt="book" /> */}
+            <div className="daily-headings">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                component="p"
+              >
+                Date
+              </Typography>
+            </div>
           </div>
+
           <div className="cell">
             <Typography
               className={classes.title}

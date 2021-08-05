@@ -11,6 +11,8 @@ html {
   );
   min-width: 100%;
   min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: auto, auto;
 }
 body {
   margin: 0;
