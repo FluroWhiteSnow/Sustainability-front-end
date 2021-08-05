@@ -72,4 +72,7 @@
   .daily-headings {
     display: none;
   }
+  .icons {
+    margin-top: 10px;
+  }
 }

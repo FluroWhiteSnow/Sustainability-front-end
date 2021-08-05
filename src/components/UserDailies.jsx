@@ -80,7 +80,7 @@ export default function UserDailies(props) {
     <div className={classes.container}>
       <Card className={classes.root} variant="outlined">
         <div className="main-wrap">
-          <div className="cell cell-one">
+          <div className="cell cell-one icons">
             <img
               className="daily-icon"
               src={book}
@@ -98,7 +98,7 @@ export default function UserDailies(props) {
             </div>
           </div>
 
-          <div className="cell">
+          <div className="cell icons">
             <img
               className="daily-icon"
               src={bike}
@@ -115,7 +115,7 @@ export default function UserDailies(props) {
               </Typography>
             </div>
           </div>
-          <div className="cell">
+          <div className="cell icons">
             <img
               className="daily-icon"
               src={coffee}
@@ -132,7 +132,7 @@ export default function UserDailies(props) {
               </Typography>
             </div>
           </div>
-          <div className="cell">
+          <div className="cell icons">
             <img
               className="daily-icon"
               src={greenCoffee}
