@@ -7,8 +7,14 @@ import DailyForm from "./DailyForm";
 import "../stylesheets/App.css";
 import DoneIcon from "@material-ui/icons/Done";
 import CloseIcon from "@material-ui/icons/Close";
+import book from "./assets/book.svg";
+import bike from "./assets/bike.svg";
+import coffee from "./assets/coffee.svg";
+import cross from "./assets/cross.svg";
+import pencil from "./assets/pencil.svg";
+import greenCoffee from "./assets/green-coffee.svg";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
     height: "fit-content",
@@ -26,7 +32,12 @@ const useStyles = makeStyles({
     fontSize: 14,
     width: "fitContent",
   },
-});
+  // button: {
+  //   [theme.breakpoints.down("sm")]: {
+  //     width: 20,
+  //   },
+  // },
+}));
 
 export default function UserDailies(props) {
   const classes = useStyles();
@@ -69,8 +80,13 @@ export default function UserDailies(props) {
     <div className={classes.container}>
       <Card className={classes.root} variant="outlined">
         <div className="main-wrap">
-          <div className="cell cell-one">
-            {/* <img className="daily-icon" src="./assets/book.svg" alt="book" /> */}
+          <div className="cell cell-one icons">
+            <img
+              className="daily-icon"
+              src={book}
+              alt="book"
+              style={{ height: "25px" }}
+            />
             <div className="daily-headings">
               <Typography
                 className={classes.title}
@@ -82,32 +98,56 @@ export default function UserDailies(props) {
             </div>
           </div>
 
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Transportation Type
-            </Typography>
+          <div className="cell icons">
+            <img
+              className="daily-icon"
+              src={bike}
+              alt="book"
+              style={{ height: "30px" }}
+            />
+            <div className="daily-headings">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                component="p"
+              >
+                Transportation Type
+              </Typography>
+            </div>
           </div>
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Number of Coffees
-            </Typography>
+          <div className="cell icons">
+            <img
+              className="daily-icon"
+              src={coffee}
+              alt="book"
+              style={{ height: "23px" }}
+            />
+            <div className="daily-headings">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                component="p"
+              >
+                Number of Coffees
+              </Typography>
+            </div>
           </div>
-          <div className="cell">
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              component="p"
-            >
-              Number of Reusable Cups
-            </Typography>
+          <div className="cell icons">
+            <img
+              className="daily-icon"
+              src={greenCoffee}
+              alt="book"
+              style={{ height: "23px" }}
+            />
+            <div className="daily-headings">
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                component="p"
+              >
+                Number of Reusable Cups
+              </Typography>
+            </div>
           </div>
         </div>
       </Card>

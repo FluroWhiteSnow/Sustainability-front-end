@@ -9,8 +9,8 @@ html {
     rgba(200, 109, 255, 0.75) 53.86%,
     #fc6bc2 100%
   );
-  min-width: 100%;
-  min-height: 100%;
+  min-width: fit-content;
+  min-height: fit-content;
   background-repeat: no-repeat;
   background-size: auto, auto;
 }
