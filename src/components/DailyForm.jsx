@@ -123,29 +123,39 @@ export default function DailyForm(props) {
         reusable_cups: parseInt(formData.get("reusable_slider")),
       },
     };
-    if (props.buttonName === "Edit") {
-      await fetch(
-        `https://sustainability-app.herokuapp.com/api/user_daily/${props.userDaily.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newData),
-        }
-      );
+    if (
+      parseInt(formData.get("coffee_slider")) <
+      parseInt(formData.get("reusable_slider"))
+    ) {
+      alert("You cannot have more resuable cups than coffee");
     } else {
-      await fetch("https://sustainability-app.herokuapp.com/api/user_daily/", {
-        method: "Post",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newData),
-      });
+      if (props.buttonName === "Edit") {
+        await fetch(
+          `https://sustainability-app.herokuapp.com/api/user_daily/${props.userDaily.id}`,
+          {
+            method: "PATCH",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newData),
+          }
+        );
+      } else {
+        await fetch(
+          "https://sustainability-app.herokuapp.com/api/user_daily/",
+          {
+            method: "Post",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newData),
+          }
+        );
+      }
+      props.fetchData();
     }
-    props.fetchData();
   }
 
   return (
