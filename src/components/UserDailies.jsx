@@ -11,6 +11,7 @@ import CloseIcon from "@material-ui/icons/Close";
 const useStyles = makeStyles({
   container: {
     width: "100%",
+    height: "fit-content",
   },
   root: {
     display: "flex",
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
     alignItems: "center",
     minWidth: "100%",
-    minHeight: "5%",
+    minHeight: "fit-content",
     paddingLeft: 20,
   },
   title: {
