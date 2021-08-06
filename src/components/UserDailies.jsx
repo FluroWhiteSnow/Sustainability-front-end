@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -32,15 +32,22 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     width: "fitContent",
   },
-  // button: {
-  //   [theme.breakpoints.down("sm")]: {
-  //     width: 20,
-  //   },
-  // },
 }));
 
 export default function UserDailies(props) {
   const classes = useStyles();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
+
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => {
+        const ismobile = window.innerWidth < 650;
+        if (ismobile !== isMobile) setIsMobile(ismobile);
+      },
+      false
+    );
+  }, [isMobile]);
 
   const deleteData = async (id) => {
     await fetch(
@@ -186,7 +193,7 @@ export default function UserDailies(props) {
                   </Typography>
                 </div>
               </div>
-              <div className="button-cell">
+              <div className={isMobile ? "cell" : "button-cell"}>
                 <DailyForm
                   buttonName="Edit"
                   buttonDisplay={<DoneIcon />}
