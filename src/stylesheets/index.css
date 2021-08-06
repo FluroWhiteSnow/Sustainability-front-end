@@ -10,7 +10,7 @@ html {
     #fc6bc2 100%
   );
   min-width: fit-content;
-  min-height: fit-content;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: auto, auto;
 }

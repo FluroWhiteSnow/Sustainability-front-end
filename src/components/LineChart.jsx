@@ -107,8 +107,9 @@ export default function LineChart(props) {
     <div
       style={{
         width: "90%",
+        height: "100%",
         maxWidth: 700,
-        maxHeight: 800,
+        // maxHeight: 800,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -133,8 +134,8 @@ export default function LineChart(props) {
             },
           ],
         }}
-        options={{ indexAxis: "y" }}
-        height={"100%"}
+        options={{ indexAxis: "x" }}
+        // height={"100%"}
         width={"fitConent"}
       ></Bar>
     </div>
